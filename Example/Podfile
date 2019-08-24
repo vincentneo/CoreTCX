@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CoreTCX_Example' do
+  pod 'CoreTCX', :path => '../'
+
+  target 'CoreTCX_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

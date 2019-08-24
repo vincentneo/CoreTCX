@@ -9,11 +9,14 @@ import Foundation
 
 public protocol TCXFolderType: TCXElement {}
 
+// MARK:- Root Folders
+
 class TCXFolders: TCXElement {
     var history = TCXSubfolders<TCXHistoryFolder>()
     var workouts = TCXSubfolders<TCXWorkoutsFolder>()
-    func f() {
-        history.setMultiSport(folder: TCXMultiSportFolder())
+    
+    override func tagName() -> String {
+        return "Folders"
     }
 }
 
@@ -23,6 +26,18 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
     public var other: folderType?
     private var multiSport: TCXMultiSportFolder?
     public var extensions: TCXExtensions?
+    
+    override func tagName() -> String {
+        if folderType.self == TCXHistoryFolder.self {
+            return "History"
+        }
+        else if folderType.self == TCXWorkoutsFolder.self {
+            return "Workouts"
+        }
+        else {
+            fatalError("Subfolder is neither History or Workouts, is againsts TCX v2 Schema.")
+        }
+    }
 }
 extension TCXSubfolders where folderType == TCXHistoryFolder {
     func getMultiSportFolder() -> TCXMultiSportFolder? {
@@ -32,6 +47,8 @@ extension TCXSubfolders where folderType == TCXHistoryFolder {
         multiSport = folder
     }
 }
+
+// MARK:- Subfolders for contents
 
 class TCXHistoryFolder: TCXElement, TCXFolderType {
     var name: String
@@ -47,8 +64,9 @@ class TCXHistoryFolder: TCXElement, TCXFolderType {
 }
 
 class TCXMultiSportFolder: TCXElement {
-    var name : String?
+    var name: String?
 }
+
 class TCXWorkoutsFolder: TCXElement, TCXFolderType {
     var name: String?
     var folder = [TCXWorkoutsFolder]()

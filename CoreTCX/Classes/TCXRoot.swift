@@ -9,4 +9,8 @@ import Foundation
 
 public class TCXRoot: TCXElement {
     
+    override func tagName() -> String {
+        return "TrainingCenterDatabase"
+    }
+    
 }

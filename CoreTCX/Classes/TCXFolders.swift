@@ -14,6 +14,7 @@ public protocol TCXFolderType: TCXElement {}
 class TCXFolders: TCXElement {
     var history = TCXSubfolders<TCXHistoryFolder>()
     var workouts = TCXSubfolders<TCXWorkoutsFolder>()
+    var courses = TCXCourses()
     
     override func tagName() -> String {
         return "Folders"
@@ -50,10 +51,10 @@ extension TCXSubfolders where folderType == TCXHistoryFolder {
 
 // MARK:- Subfolders for contents
 
-class TCXHistoryFolder: TCXElement, TCXFolderType {
+public final class TCXHistoryFolder: TCXElement, TCXFolderType {
     var name: String
     var folder = [TCXHistoryFolder]()
-    var activityReference = [Int]()
+    var activityReference = [Date]()
     var week = [TCXWeek]()
     var notes: String?
     var extensions: TCXExtensions?
@@ -61,24 +62,48 @@ class TCXHistoryFolder: TCXElement, TCXFolderType {
     required init() {
         name = "Untitled"
     }
+    
+    init(name: String) {
+        self.name = name
+    }
 }
 
-class TCXMultiSportFolder: TCXElement {
+public final class TCXMultiSportFolder: TCXElement {
     var name: String?
+    var folder = [TCXMultiSportFolder]()
+    var activityReference = [Date]()
+    var week: TCXWeek?
+    var notes: String?
+    var extensions: TCXExtensions?
 }
 
-class TCXWorkoutsFolder: TCXElement, TCXFolderType {
+public final class TCXWorkoutsFolder: TCXElement, TCXFolderType {
     var name: String?
     var folder = [TCXWorkoutsFolder]()
-    var workoutNameReference: String?
+    var workoutNameReference: String? //selfnote: RestrictedToken_t
+    var extensions: TCXExtensions?
 }
 
-class TCXWeek: TCXElement {
+public final class TCXCourses: TCXElement {
+    
+}
+
+public final class TCXCoursesFolder: TCXElement { // shouldn't conform to TCXFolderType
+    var name: String?
+    var folder = [TCXCoursesFolder]()
+    //var courseNameReference: NameKeyRef_t //selfnote:
+    var notes: String?
+    var extensions: TCXExtensions?
+    
+}
+
+public final class TCXWeek: TCXElement {
     var startDay: Date?
     var notes: String?
     var extensions: TCXExtensions?
 }
 
-public class TCXExtensions: TCXElement {
+open class TCXExtensions: TCXElement {
     
 }
+

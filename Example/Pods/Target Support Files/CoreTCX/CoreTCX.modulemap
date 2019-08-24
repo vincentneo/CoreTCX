@@ -1,0 +1,6 @@
+framework module CoreTCX {
+  umbrella header "CoreTCX-umbrella.h"
+
+  export *
+  module * { export * }
+}

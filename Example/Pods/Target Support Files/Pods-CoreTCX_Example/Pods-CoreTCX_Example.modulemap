@@ -1,0 +1,6 @@
+framework module Pods_CoreTCX_Example {
+  umbrella header "Pods-CoreTCX_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

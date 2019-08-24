@@ -1,0 +1,22 @@
+{
+  "name": "CoreTCX",
+  "version": "0.1.0",
+  "summary": "A short description of CoreTCX.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/vincentneo/CoreTCX",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "vincentneo": "23420208+vincentneo@users.noreply.github.com"
+  },
+  "source": {
+    "git": "https://github.com/vincentneo/CoreTCX.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "CoreTCX/Classes/**/*"
+}

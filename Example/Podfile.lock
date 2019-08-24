@@ -1,0 +1,16 @@
+PODS:
+  - CoreTCX (0.1.0)
+
+DEPENDENCIES:
+  - CoreTCX (from `../`)
+
+EXTERNAL SOURCES:
+  CoreTCX:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CoreTCX: 42d160acceb43c4a761ec6b0933f912c00fe8740
+
+PODFILE CHECKSUM: 8da6e463a3d8e573b61f9ba75008a8c77e63e09f
+
+COCOAPODS: 1.7.5

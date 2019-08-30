@@ -68,11 +68,17 @@ public final class TCXHistoryFolder: TCXElement, TCXFolderType {
     }
 }
 
+enum TCXFolderNames: String {
+    case running = "Running"
+    case biking = "Biking"
+    case other = "Other"
+}
+
 public final class TCXMultiSportFolder: TCXElement {
     var name: String?
     var folder = [TCXMultiSportFolder]()
-    var activityReference = [Date]()
-    var week: TCXWeek?
+    var activityReference = [TCXActivityReference]()
+    var week = [TCXWeek]()
     var notes: String?
     var extensions: TCXExtensions?
 }
@@ -80,30 +86,20 @@ public final class TCXMultiSportFolder: TCXElement {
 public final class TCXWorkoutsFolder: TCXElement, TCXFolderType {
     var name: String?
     var folder = [TCXWorkoutsFolder]()
-    var workoutNameReference: String? //selfnote: RestrictedToken_t
+    var workoutNameReference: TCXRestrictedToken?
     var extensions: TCXExtensions?
 }
 
 public final class TCXCourses: TCXElement {
-    
+    var folder: TCXCoursesFolder?
+    var extensions: TCXExtensions?
 }
 
 public final class TCXCoursesFolder: TCXElement { // shouldn't conform to TCXFolderType
     var name: String?
     var folder = [TCXCoursesFolder]()
-    //var courseNameReference: NameKeyRef_t //selfnote:
+    var courseNameReference: TCXRestrictedToken?
     var notes: String?
     var extensions: TCXExtensions?
     
 }
-
-public final class TCXWeek: TCXElement {
-    var startDay: Date?
-    var notes: String?
-    var extensions: TCXExtensions?
-}
-
-open class TCXExtensions: TCXElement {
-    
-}
-

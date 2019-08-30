@@ -22,7 +22,10 @@ pod 'CoreTCX'
 
 ## Author
 
-vincentneo, 23420208+vincentneo@users.noreply.github.com
+Vincent Neo
+
+## You may want to checkout:
+[CoreGPX](https://github.com/vincentneo/CoreGPX), a similar project, but for GPX files instead.
 
 ## License
 

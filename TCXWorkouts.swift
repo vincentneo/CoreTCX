@@ -16,10 +16,27 @@ class TCXWorkouts: TCXElement {
 class TCXWorkout: TCXElement {
     var sport: String?
     var name: TCXRestrictedToken?
-    //var step = abstractStep
+    var step = [TCXAbstractStep]()
     var scheduledOn: [Date]?
     var notes: String?
     //var creator: abstractsource
     var extensions: TCXExtensions?
+    
+}
+
+class TCXAbstractStep: TCXElement {
+    private var privateID = Int()
+    
+    public var stepID: Int {
+        get {
+            return privateID
+        }
+        set {
+            if newValue > 0 && newValue <= 20 {
+                privateID = newValue
+            }
+        }
+    }
+    
     
 }

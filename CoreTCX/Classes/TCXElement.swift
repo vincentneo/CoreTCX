@@ -62,7 +62,7 @@ open class TCXElement: NSObject {
     ///         <trk> // an open tag
     ///         <wpt lat=1.0 lon=2.0> // an open tag with extra attributes
     func addOpenTag(toTCX tcx: NSMutableString, indentationLevel: Int) {
-        tcx.append(String(format: "%@<%@>\r\n", indent(forIndentationLevel: indentationLevel), self.tagName()))
+        tcx.append(String(format: "%@<%@>\r\n", indent(level: indentationLevel), self.tagName()))
     }
     
     /// Implements a child tag after an open tag, before a close tag.
@@ -92,7 +92,7 @@ open class TCXElement: NSObject {
     ///
     ///         </metadata> // a close tag
     func addCloseTag(toTCX tcx: NSMutableString, indentationLevel: Int) {
-        tcx.append(String(format: "%@</%@>\r\n", indent(forIndentationLevel: indentationLevel), self.tagName()))
+        tcx.append(String(format: "%@</%@>\r\n", indent(level: indentationLevel), self.tagName()))
     }
     
     /// For adding `String` type values to a child tag
@@ -219,10 +219,10 @@ open class TCXElement: NSObject {
         
         // will append as XML CDATA instead.
         if isCDATA {
-            gpx.appendFormat("%@<%@%@><![CDATA[%@]]></%@>\r\n", indent(forIndentationLevel: indentationLevel), tagName, (attribute != nil) ? " ".appending(attribute!): "", value?.replacingOccurrences(of: "]]>", with: "]]&gt;") ?? "", tagName)
+            gpx.appendFormat("%@<%@%@><![CDATA[%@]]></%@>\r\n", indent(level: indentationLevel), tagName, (attribute != nil) ? " ".appending(attribute!): "", value?.replacingOccurrences(of: "]]>", with: "]]&gt;") ?? "", tagName)
         }
         else {
-            gpx.appendFormat("%@<%@%@>%@</%@>\r\n", indent(forIndentationLevel: indentationLevel), tagName, (attribute != nil) ? " ".appending(attribute!): "", value ?? "", tagName)
+            gpx.appendFormat("%@<%@%@>%@</%@>\r\n", indent(level: indentationLevel), tagName, (attribute != nil) ? " ".appending(attribute!): "", value ?? "", tagName)
         }
     }
     
@@ -239,7 +239,7 @@ open class TCXElement: NSObject {
     ///       This is unindented text (indentationLevel == 0)
     ///         This is indented text (indentationLevel == 1)
     ///             This is indented text (indentationLevel == 2)
-    func indent(forIndentationLevel indentationLevel: Int) -> NSMutableString {
+    func indent(level indentationLevel: Int) -> NSMutableString {
         let result = NSMutableString()
         
         for _ in 0..<indentationLevel {

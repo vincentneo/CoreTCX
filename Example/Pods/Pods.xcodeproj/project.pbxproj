@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		08D4D53BAE7271AA53ECD8560775E74E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		1296B145235584A800F3A36A /* TCXWorkouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1296B144235584A800F3A36A /* TCXWorkouts.swift */; };
+		1296B14823558F1200F3A36A /* NSMutableString+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1296B14723558F1200F3A36A /* NSMutableString+XML.swift */; };
 		20C41B7CB6B3CB7DD5BE0659E9B97EBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		3E881A9147AD1B4793DA28A75982AD16 /* CoreTCX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B91B2DF5FEEF75303258F62EAD1232 /* CoreTCX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FE8D6F1D1E15BFFF4E4792A23094CFA /* TCXElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBC63F055F63EEE712A41B4D9D0AFB3 /* TCXElement.swift */; };
@@ -47,6 +49,8 @@
 		0701AD4B1B745F327B690673194AB85E /* Pods_CoreTCX_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreTCX_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C9075DB3B0815AA434697BCDD220F00 /* CoreTCX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CoreTCX.modulemap; sourceTree = "<group>"; };
 		0E65276A4E299501F99E77AAB72AA8C6 /* Pods-CoreTCX_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CoreTCX_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		1296B144235584A800F3A36A /* TCXWorkouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXWorkouts.swift; sourceTree = "<group>"; };
+		1296B14723558F1200F3A36A /* NSMutableString+XML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableString+XML.swift"; sourceTree = "<group>"; };
 		24B701BB64D81EC1D62A584F807467FA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		297ECD03F1B3FA7F96CC767E0123A0AB /* Pods-CoreTCX_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CoreTCX_Tests-dummy.m"; sourceTree = "<group>"; };
 		2A3B089B18F139FA175DE32675766847 /* Pods-CoreTCX_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CoreTCX_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -180,6 +184,8 @@
 				BF795054231129DB00DE6CCA /* TCXFolders.swift */,
 				BF7950562311824500DE6CCA /* TCXCommonTypes.swift */,
 				BFABE6712318E2BF00710967 /* TCXActivities.swift */,
+				1296B144235584A800F3A36A /* TCXWorkouts.swift */,
+				1296B14723558F1200F3A36A /* NSMutableString+XML.swift */,
 				E61A85F32B1C2D7870CD306A273DDF6E /* Pod */,
 				A68B9FA342B7959D893DEB8F1F7F6405 /* Support Files */,
 			);
@@ -383,6 +389,8 @@
 			files = (
 				EE535DF7C21AD24B69BA3A67DE94E6E0 /* CoreTCX-dummy.m in Sources */,
 				BF795055231129DB00DE6CCA /* TCXFolders.swift in Sources */,
+				1296B14823558F1200F3A36A /* NSMutableString+XML.swift in Sources */,
+				1296B145235584A800F3A36A /* TCXWorkouts.swift in Sources */,
 				4FE8D6F1D1E15BFFF4E4792A23094CFA /* TCXElement.swift in Sources */,
 				BF795052231127C700DE6CCA /* TCXRoot.swift in Sources */,
 				BFABE6722318E2BF00710967 /* TCXActivities.swift in Sources */,

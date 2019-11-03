@@ -7,7 +7,9 @@
 
 import Foundation
 
-public protocol TCXFolderType: TCXElement {}
+public protocol TCXFolderType: TCXElement {
+    var type: TCXSubFolderType? { get set }
+}
 
 // MARK:- Root Folders
 
@@ -57,6 +59,7 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
     override func addChildTag(toTCX tcx: NSMutableString, indentationLevel: Int) {
         
         if let running = running {
+            running.type = .running
             running.tcxTagging(tcx, indentationLevel: indentationLevel)
         }
         if let biking = biking {
@@ -80,13 +83,23 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
 
 // MARK:- Subfolders for contents
 
+public enum TCXSubFolderType {
+    case running, biking, other
+}
+
 public final class TCXHistoryFolder: TCXElement, TCXFolderType {
+    public var type: TCXSubFolderType?
+    
     var name: String
     var folder = [TCXHistoryFolder]()
     var activityReference = [Date]()
     var week = [TCXWeek]()
     var notes: String?
     var extensions: TCXExtensions?
+    
+    override func tagName() -> String {
+        
+    }
     
     required init() {
         name = "Untitled"

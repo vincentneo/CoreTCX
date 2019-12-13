@@ -15,10 +15,15 @@
 		4FE8D6F1D1E15BFFF4E4792A23094CFA /* TCXElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBC63F055F63EEE712A41B4D9D0AFB3 /* TCXElement.swift */; };
 		536017E2A61B162809D972E2B9E8A12C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		7A4304708AAC2471736D73BE9DF56FD2 /* Pods-CoreTCX_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 297ECD03F1B3FA7F96CC767E0123A0AB /* Pods-CoreTCX_Tests-dummy.m */; };
+		BF2DB78523A2776900D71250 /* TCXCategoryFolders.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2DB78423A2776900D71250 /* TCXCategoryFolders.swift */; };
+		BF2E184723A3C63900590745 /* TCXActivityReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2E184623A3C63900590745 /* TCXActivityReference.swift */; };
+		BF2E184A23A3C88000590745 /* Converters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2E184923A3C88000590745 /* Converters.swift */; };
+		BF2E184C23A3D15A00590745 /* TCXDateConverters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2E184B23A3D15A00590745 /* TCXDateConverters.swift */; };
 		BF795052231127C700DE6CCA /* TCXRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF795051231127C700DE6CCA /* TCXRoot.swift */; };
 		BF795055231129DB00DE6CCA /* TCXFolders.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF795054231129DB00DE6CCA /* TCXFolders.swift */; };
 		BF7950572311824500DE6CCA /* TCXCommonTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7950562311824500DE6CCA /* TCXCommonTypes.swift */; };
 		BFABE6722318E2BF00710967 /* TCXActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFABE6712318E2BF00710967 /* TCXActivities.swift */; };
+		BFC47F4D23A2210D0094726F /* TCXSubfolders.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC47F4C23A2210D0094726F /* TCXSubfolders.swift */; };
 		C64A9E9F1158BBB0BC54C9FBB68DB5BB /* Pods-CoreTCX_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 479F35135DBF3C11E9E8D3BAA62631AF /* Pods-CoreTCX_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCAEA305FFB021CCE592B275BDABFAEE /* Pods-CoreTCX_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7335D0451DC26D1CA9D4B19921A473 /* Pods-CoreTCX_Example-dummy.m */; };
 		EE535DF7C21AD24B69BA3A67DE94E6E0 /* CoreTCX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8927E50523525B0FC27CE03C343623CD /* CoreTCX-dummy.m */; };
@@ -70,10 +75,15 @@
 		A1C0063B11CB49DA5E6C4919DA7DA72C /* Pods-CoreTCX_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CoreTCX_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		ADA11BE4CA6045EE2C3ED416CECF4B27 /* CoreTCX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CoreTCX-prefix.pch"; sourceTree = "<group>"; };
 		BBB3B159C7B505A008150F2F9BE4C11A /* CoreTCX-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CoreTCX-Info.plist"; sourceTree = "<group>"; };
+		BF2DB78423A2776900D71250 /* TCXCategoryFolders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TCXCategoryFolders.swift; path = CoreTCX/Classes/TCXCategoryFolders.swift; sourceTree = "<group>"; };
+		BF2E184623A3C63900590745 /* TCXActivityReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TCXActivityReference.swift; path = CoreTCX/Classes/TCXActivityReference.swift; sourceTree = "<group>"; };
+		BF2E184923A3C88000590745 /* Converters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Converters.swift; path = CoreTCX/Classes/Converters.swift; sourceTree = "<group>"; };
+		BF2E184B23A3D15A00590745 /* TCXDateConverters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXDateConverters.swift; sourceTree = "<group>"; };
 		BF795051231127C700DE6CCA /* TCXRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TCXRoot.swift; path = CoreTCX/Classes/TCXRoot.swift; sourceTree = "<group>"; };
 		BF795054231129DB00DE6CCA /* TCXFolders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TCXFolders.swift; path = CoreTCX/Classes/TCXFolders.swift; sourceTree = "<group>"; };
 		BF7950562311824500DE6CCA /* TCXCommonTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TCXCommonTypes.swift; path = CoreTCX/Classes/TCXCommonTypes.swift; sourceTree = "<group>"; };
 		BFABE6712318E2BF00710967 /* TCXActivities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TCXActivities.swift; path = CoreTCX/Classes/TCXActivities.swift; sourceTree = "<group>"; };
+		BFC47F4C23A2210D0094726F /* TCXSubfolders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TCXSubfolders.swift; path = CoreTCX/Classes/TCXSubfolders.swift; sourceTree = "<group>"; };
 		CBBC63F055F63EEE712A41B4D9D0AFB3 /* TCXElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TCXElement.swift; path = CoreTCX/Classes/TCXElement.swift; sourceTree = "<group>"; };
 		CE9A378B49B4261D3C95BD0BF283BEBD /* Pods-CoreTCX_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CoreTCX_Example-umbrella.h"; sourceTree = "<group>"; };
 		D025FE5F89847DD65EA9445576CA0867 /* CoreTCX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreTCX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,12 +192,17 @@
 				CBBC63F055F63EEE712A41B4D9D0AFB3 /* TCXElement.swift */,
 				BF795051231127C700DE6CCA /* TCXRoot.swift */,
 				BF795054231129DB00DE6CCA /* TCXFolders.swift */,
+				BFC47F4C23A2210D0094726F /* TCXSubfolders.swift */,
+				BF2DB78423A2776900D71250 /* TCXCategoryFolders.swift */,
 				BF7950562311824500DE6CCA /* TCXCommonTypes.swift */,
 				BFABE6712318E2BF00710967 /* TCXActivities.swift */,
 				1296B144235584A800F3A36A /* TCXWorkouts.swift */,
 				1296B14723558F1200F3A36A /* NSMutableString+XML.swift */,
+				BF2E184623A3C63900590745 /* TCXActivityReference.swift */,
 				E61A85F32B1C2D7870CD306A273DDF6E /* Pod */,
 				A68B9FA342B7959D893DEB8F1F7F6405 /* Support Files */,
+				BF2E184923A3C88000590745 /* Converters.swift */,
+				BF2E184B23A3D15A00590745 /* TCXDateConverters.swift */,
 			);
 			name = CoreTCX;
 			path = ../..;
@@ -389,12 +404,17 @@
 			files = (
 				EE535DF7C21AD24B69BA3A67DE94E6E0 /* CoreTCX-dummy.m in Sources */,
 				BF795055231129DB00DE6CCA /* TCXFolders.swift in Sources */,
+				BF2E184A23A3C88000590745 /* Converters.swift in Sources */,
+				BFC47F4D23A2210D0094726F /* TCXSubfolders.swift in Sources */,
 				1296B14823558F1200F3A36A /* NSMutableString+XML.swift in Sources */,
 				1296B145235584A800F3A36A /* TCXWorkouts.swift in Sources */,
 				4FE8D6F1D1E15BFFF4E4792A23094CFA /* TCXElement.swift in Sources */,
+				BF2E184C23A3D15A00590745 /* TCXDateConverters.swift in Sources */,
 				BF795052231127C700DE6CCA /* TCXRoot.swift in Sources */,
 				BFABE6722318E2BF00710967 /* TCXActivities.swift in Sources */,
+				BF2E184723A3C63900590745 /* TCXActivityReference.swift in Sources */,
 				BF7950572311824500DE6CCA /* TCXCommonTypes.swift in Sources */,
+				BF2DB78523A2776900D71250 /* TCXCategoryFolders.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,7 +30,7 @@ open class TCXElement: NSObject {
     
     // MARK:- Instance
     
-    public required override init() {
+    public override init() {
         super.init()
     }
     
@@ -155,40 +155,6 @@ open class TCXElement: NSObject {
     ///     - gpx: The GPX string
     ///     - tagName: The tag name of the child tag
     ///     - indentationLevel: the amount of indentation required
-    ///     - attribute: a `String` type that is appended to `value` parameter
-    ///
-    /// - Without default value
-    /// - Method should only be used when overriding `addChildTag(toGPX:indentationLevel:)`
-    /// - **Example**:
-    ///
-    ///       <name attribute>Your Value Here</name>
-    func addProperty(forValue value: String?, gpx: NSMutableString, tagName: String, indentationLevel: Int, attribute: String?) {
-        addProperty(forValue: value, gpx: gpx, tagName: tagName, indentationLevel: indentationLevel, defaultValue: nil, attribute: attribute)
-    }
-    
-    /// For adding `String` type values to a child tag
-    /// - Parameters:
-    ///     - value: value of that particular child tag
-    ///     - gpx: The GPX string
-    ///     - tagName: The tag name of the child tag
-    ///     - indentationLevel: the amount of indentation required
-    ///     - defaultValue: default value expected of the particular child tag
-    ///
-    /// - Without attribute
-    /// - Method should only be used when overriding `addChildTag(toGPX:indentationLevel:)`
-    /// - **Example**:
-    ///
-    ///       <name>Your Value Here</name>
-    func addProperty(forValue value: String?, gpx: NSMutableString, tagName: String, indentationLevel: Int, defaultValue: String?) {
-        addProperty(forValue: value, gpx: gpx, tagName: tagName, indentationLevel: indentationLevel, defaultValue: defaultValue, attribute: nil)
-    }
-    
-    /// For adding `String` type values to a child tag
-    /// - Parameters:
-    ///     - value: value of that particular child tag
-    ///     - gpx: The GPX string
-    ///     - tagName: The tag name of the child tag
-    ///     - indentationLevel: the amount of indentation required
     ///     - defaultValue: default value expected of the particular child tag
     ///     - attribute: an attribute of the tag
     ///
@@ -197,7 +163,7 @@ open class TCXElement: NSObject {
     /// - **Example**:
     ///
     ///       <name attribute>Your Value Here</name>
-    func addProperty(forValue value: String?, gpx: NSMutableString, tagName: String, indentationLevel: Int, defaultValue: String?, attribute: String?) {
+    func addProperty(forValue value: String?, gpx: NSMutableString, tagName: String, indentationLevel: Int, defaultValue: String? = nil, attribute: String? = nil) {
         
         // value cannot be nil or empty
         if value == nil || value == "" {

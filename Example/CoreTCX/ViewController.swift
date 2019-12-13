@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import CoreTCX
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        var tcxfolder = TCXSubfolders<TCXHistoryFolder>()
+    
+
+        print(tcxfolder.tcxFormatted())
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 

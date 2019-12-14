@@ -31,6 +31,9 @@ public final class TCXWeek: TCXElement {
         
         tcx.appendOpenTag(indentation: indent(level: indentationLevel), tag: tagName(), attribute: attribute)
     }
+    
+    override func addChildTag(toTCX tcx: NSMutableString, indentationLevel: Int) {
+        addProperty(forValue: notes, gpx: tcx, tagName: "Notes", indentationLevel: indentationLevel)
     }
     
 }

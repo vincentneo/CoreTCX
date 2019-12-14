@@ -15,9 +15,10 @@ public class TCXActivityReference: TCXElement {
         id = activityRefId
     }
     
-    override func addChildTag(toTCX tcx: NSMutableString, indentationLevel: Int) {
+    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         guard let formattedDate = DateConvert.toString(with: .ISO8601, from: id) else { return }
         
-        addProperty(forValue: formattedDate, gpx: tcx, tagName: "Id", indentationLevel: indentationLevel)
+        addProperty(forValue: formattedDate, tcx: &tcx, tagName: "Id", indentationLevel: indentationLevel)
     }
+    
 }

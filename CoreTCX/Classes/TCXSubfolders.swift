@@ -50,29 +50,29 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
         }
     }
     
-    override func addChildTag(toTCX tcx: NSMutableString, indentationLevel: Int) {
-        
+    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         if let running = running {
             //running.type = .running
-            running.tcxTagging(tcx, indentationLevel: indentationLevel)
+            running.tcxTagging(&tcx, indentationLevel: indentationLevel)
         }
         if let biking = biking {
-            biking.tcxTagging(tcx, indentationLevel: indentationLevel)
+            biking.tcxTagging(&tcx, indentationLevel: indentationLevel)
         }
         if let other = other {
-            other.tcxTagging(tcx, indentationLevel: indentationLevel)
+            other.tcxTagging(&tcx, indentationLevel: indentationLevel)
         }
         if let extensions = extensions {
-            extensions.tcxTagging(tcx, indentationLevel: indentationLevel)
+            extensions.tcxTagging(&tcx, indentationLevel: indentationLevel)
         }
         
         // MultiSport tag is only written if folder is of type History_t
         if folderType.self == TCXHistoryFolder.self {
             if let multiSport = multiSport {
-                multiSport.tcxTagging(tcx, indentationLevel: indentationLevel)
+                multiSport.tcxTagging(&tcx, indentationLevel: indentationLevel)
             }
         }
     }
+    
 }
 
 public final class TCXCourses: TCXElement {

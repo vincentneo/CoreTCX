@@ -18,17 +18,18 @@ class TCXFolders: TCXElement {
         return "Folders"
     }
     
-    override func addChildTag(toTCX tcx: NSMutableString, indentationLevel: Int) {
+    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         if let history = history {
-            history.tcxTagging(tcx, indentationLevel: indentationLevel)
+            history.tcxTagging(&tcx, indentationLevel: indentationLevel)
         }
         if let workouts = workouts {
-            workouts.tcxTagging(tcx, indentationLevel: indentationLevel)
+            workouts.tcxTagging(&tcx, indentationLevel: indentationLevel)
         }
         
         if let courses = courses {
-            courses.tcxTagging(tcx, indentationLevel: indentationLevel)
+            courses.tcxTagging(&tcx, indentationLevel: indentationLevel)
         }
     }
+    
     
 }

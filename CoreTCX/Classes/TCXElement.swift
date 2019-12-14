@@ -28,6 +28,8 @@ open class TCXElement: NSObject {
         fatalError("Subclass must override tagName()")
     }
     
+    private var tcx = String()
+    
     // MARK:- Instance
     
     public override init() {
@@ -38,16 +40,15 @@ open class TCXElement: NSObject {
     
     /// for generating newly tracked data straight into a formatted `String` that holds formatted data according to GPX syntax
     open func tcxFormatted() -> String {
-        let tcx = NSMutableString()
-        self.tcxTagging(tcx, indentationLevel: 0)
+        self.tcxTagging(&tcx, indentationLevel: 0)
         return tcx as String
     }
     
     /// A method for invoking all tag-related methods
-    func tcxTagging(_ tcx: NSMutableString, indentationLevel: Int) {
-        self.addOpenTag(toTCX: tcx, indentationLevel: indentationLevel)
-        self.addChildTag(toTCX: tcx, indentationLevel: indentationLevel + 1)
-        self.addCloseTag(toTCX: tcx, indentationLevel: indentationLevel)
+    func tcxTagging(_ tcx: inout String, indentationLevel: Int) {
+        self.addOpenTag(toTCX: &tcx, indentationLevel: indentationLevel)
+        self.addChildTag(toTCX: &tcx, indentationLevel: indentationLevel + 1)
+        self.addCloseTag(toTCX: &tcx, indentationLevel: indentationLevel)
     }
     
     /// Implements an open tag
@@ -61,7 +62,7 @@ open class TCXElement: NSObject {
     ///
     ///         <trk> // an open tag
     ///         <wpt lat=1.0 lon=2.0> // an open tag with extra attributes
-    func addOpenTag(toTCX tcx: NSMutableString, indentationLevel: Int) {
+    func addOpenTag(toTCX tcx: inout String, indentationLevel: Int) {
         tcx.append(String(format: "%@<%@>\r\n", indent(level: indentationLevel), self.tagName()))
     }
     
@@ -77,7 +78,7 @@ open class TCXElement: NSObject {
     ///         <trkpt lat=4.0 lon=3.0> // an open tag
     ///             <ele>20.19</ele>    // a child tag
     ///         </trkpt>                // a close tag
-    func addChildTag(toTCX tcx: NSMutableString, indentationLevel: Int) {
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         // Override to subclasses
     }
     
@@ -91,24 +92,8 @@ open class TCXElement: NSObject {
     /// - **Example**:
     ///
     ///         </metadata> // a close tag
-    func addCloseTag(toTCX tcx: NSMutableString, indentationLevel: Int) {
+    func addCloseTag(toTCX tcx: inout String, indentationLevel: Int) {
         tcx.append(String(format: "%@</%@>\r\n", indent(level: indentationLevel), self.tagName()))
-    }
-    
-    /// For adding `String` type values to a child tag
-    /// - Parameters:
-    ///     - value: value of that particular child tag
-    ///     - gpx: The GPX string
-    ///     - tagName: The tag name of the child tag
-    ///     - indentationLevel: the amount of indentation required
-    ///
-    /// - Without default value or attribute
-    /// - Method should only be used when overriding `addChildTag(toGPX:indentationLevel:)`
-    /// - **Example**:
-    ///
-    ///       <name>Your Value Here</name>
-    func addProperty(forValue value: String?, gpx: NSMutableString, tagName: String, indentationLevel: Int) {
-        addProperty(forValue: value, gpx: gpx, tagName: tagName, indentationLevel: indentationLevel, defaultValue: nil, attribute: nil)
     }
     
     /// For adding `Int` type values to a child tag
@@ -124,9 +109,9 @@ open class TCXElement: NSObject {
     /// - **Example**:
     ///
     ///       <ele>100</ele> // 100 is an example value
-    func addProperty(forIntegerValue value: Int?, gpx: NSMutableString, tagName: String, indentationLevel: Int) {
+    func addProperty(forIntegerValue value: Int?, tcx: inout String, tagName: String, indentationLevel: Int) {
         if let validValue = value {
-            addProperty(forValue: String(validValue), gpx: gpx, tagName: tagName, indentationLevel: indentationLevel, defaultValue: nil, attribute: nil)
+            addProperty(forValue: String(validValue), tcx: &tcx, tagName: tagName, indentationLevel: indentationLevel, defaultValue: nil, attribute: nil)
         }
     }
     
@@ -143,9 +128,9 @@ open class TCXElement: NSObject {
     /// - **Example**:
     ///
     ///       <ele>100.21345</ele> // 100.21345 is an example value
-    func addProperty(forDoubleValue value: Double?, gpx: NSMutableString, tagName: String, indentationLevel: Int) {
+    func addProperty(forDoubleValue value: Double?, tcx: inout String, tagName: String, indentationLevel: Int) {
         if let validValue = value {
-            addProperty(forValue: String(validValue), gpx: gpx, tagName: tagName, indentationLevel: indentationLevel, defaultValue: nil, attribute: nil)
+            addProperty(forValue: String(validValue), tcx: &tcx, tagName: tagName, indentationLevel: indentationLevel, defaultValue: nil, attribute: nil)
         }
     }
     
@@ -163,7 +148,7 @@ open class TCXElement: NSObject {
     /// - **Example**:
     ///
     ///       <name attribute>Your Value Here</name>
-    func addProperty(forValue value: String?, gpx: NSMutableString, tagName: String, indentationLevel: Int, defaultValue: String? = nil, attribute: String? = nil) {
+    func addProperty(forValue value: String?, tcx: inout String, tagName: String, indentationLevel: Int, defaultValue: String? = nil, attribute: String? = nil) {
         
         // value cannot be nil or empty
         if value == nil || value == "" {
@@ -185,10 +170,10 @@ open class TCXElement: NSObject {
         
         // will append as XML CDATA instead.
         if isCDATA {
-            gpx.appendFormat("%@<%@%@><![CDATA[%@]]></%@>\r\n", indent(level: indentationLevel), tagName, (attribute != nil) ? " ".appending(attribute!): "", value?.replacingOccurrences(of: "]]>", with: "]]&gt;") ?? "", tagName)
+            tcx.append(String(format: "%@<%@%@><![CDATA[%@]]></%@>\r\n", indent(level: indentationLevel), tagName, (attribute != nil) ? " ".appending(attribute!): "", value?.replacingOccurrences(of: "]]>", with: "]]&gt;") ?? "", tagName))
         }
         else {
-            gpx.appendFormat("%@<%@%@>%@</%@>\r\n", indent(level: indentationLevel), tagName, (attribute != nil) ? " ".appending(attribute!): "", value ?? "", tagName)
+            tcx.append(String(format: "%@<%@%@>%@</%@>\r\n", indent(level: indentationLevel), tagName, (attribute != nil) ? " ".appending(attribute!): "", value ?? "", tagName))
         }
     }
     
@@ -205,8 +190,8 @@ open class TCXElement: NSObject {
     ///       This is unindented text (indentationLevel == 0)
     ///         This is indented text (indentationLevel == 1)
     ///             This is indented text (indentationLevel == 2)
-    func indent(level indentationLevel: Int) -> NSMutableString {
-        let result = NSMutableString()
+    func indent(level indentationLevel: Int) -> String {
+        var result = String()
         
         for _ in 0..<indentationLevel {
             result.append("\t")

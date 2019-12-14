@@ -24,18 +24,16 @@ public final class TCXWeek: TCXElement {
         return "Week"
     }
     
-    override func addOpenTag(toTCX tcx: NSMutableString, indentationLevel: Int) {
-        let attribute = NSMutableString()
-        
-        attribute.appendFormat(" StartDay=\"%s\"", DateConvert.toString(with: .day, from: startDay)!)
-        
-        tcx.appendOpenTag(indentation: indent(level: indentationLevel), tag: tagName(), attribute: attribute)
+    override func addOpenTag(toTCX tcx: inout String, indentationLevel: Int) {
+        let dayAttr = TCXAttribute(name: "StartDay", value: DateConvert.toString(with: .day, from: startDay)!)
+        tcx.appendOpenTag(indentation: indent(level: indentationLevel), tag: tagName(), attributes: [dayAttr])
     }
     
-    override func addChildTag(toTCX tcx: NSMutableString, indentationLevel: Int) {
-        addProperty(forValue: notes, gpx: tcx, tagName: "Notes", indentationLevel: indentationLevel)
+    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        addProperty(forValue: notes, tcx: &tcx, tagName: "Notes", indentationLevel: indentationLevel)
     }
     
+
 }
 
 open class TCXExtensions: TCXElement {

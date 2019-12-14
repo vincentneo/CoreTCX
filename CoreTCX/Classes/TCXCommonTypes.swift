@@ -31,6 +31,8 @@ public final class TCXWeek: TCXElement {
         
         tcx.appendOpenTag(indentation: indent(level: indentationLevel), tag: tagName(), attribute: attribute)
     }
+    }
+    
 }
 
 open class TCXExtensions: TCXElement {

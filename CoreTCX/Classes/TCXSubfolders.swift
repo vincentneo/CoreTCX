@@ -51,6 +51,7 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
     }
     
     override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        autoTagCategories()
         if let running = running {
             //running.type = .running
             running.tcxTagging(&tcx, indentationLevel: indentationLevel)

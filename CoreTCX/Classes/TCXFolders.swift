@@ -9,9 +9,9 @@ import Foundation
 
 // MARK:- Root Folders
 
-class TCXFolders: TCXElement {
-    var history: TCXSubfolders<TCXHistoryFolder>?
-    var workouts: TCXSubfolders<TCXWorkoutsFolder>?
+public class TCXFolders: TCXElement {
+    public var history: TCXSubfolders<TCXHistoryFolder>?
+    public var workouts: TCXSubfolders<TCXWorkoutsFolder>?
     var courses: TCXCourses?
     
     override func tagName() -> String {

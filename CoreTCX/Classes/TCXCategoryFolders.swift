@@ -15,9 +15,9 @@ public final class TCXHistoryFolder: TCXElement, TCXFolderType {
     public var category: TCXCategoryFolderNames = .unspecified
     
     var name: String
-    var folder = [TCXHistoryFolder]()
+    var folders = [TCXHistoryFolder]()
     var activityRefs = [TCXActivityReference]()
-    var week = [TCXWeek]()
+    var weeks = [TCXWeek]()
     var notes: String?
     var extensions: TCXExtensions?
     
@@ -25,12 +25,35 @@ public final class TCXHistoryFolder: TCXElement, TCXFolderType {
         return category.rawValue
     }
     
-    override init() {
-        name = "Untitled"
-    }
-    
     public init(name: String) {
         self.name = name
+    }
+    
+    override func addOpenTag(toTCX tcx: inout String, indentationLevel: Int) {
+        let nameAttr = TCXAttribute(name: "Name", value: name)
+        tcx.appendOpenTag(indentation: indent(level: indentationLevel), tag: tagName(), attributes: [nameAttr])
+    }
+    
+    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        for folder in folders {
+            folder.tcxTagging(&tcx, indentationLevel: indentationLevel)
+        }
+        
+        for ref in activityRefs {
+            ref.tcxTagging(&tcx, indentationLevel: indentationLevel)
+        }
+        
+        for week in weeks {
+            week.tcxTagging(&tcx, indentationLevel: indentationLevel)
+        }
+        
+        if let notes = notes {
+            addProperty(forValue: notes, tcx: &tcx, tagName: "Notes", indentationLevel: indentationLevel)
+        }
+        
+        if let extensions = extensions {
+            extensions.tcxTagging(&tcx, indentationLevel: indentationLevel)
+        }
     }
     
     
@@ -39,12 +62,14 @@ public final class TCXHistoryFolder: TCXElement, TCXFolderType {
 public final class TCXWorkoutsFolder: TCXElement, TCXFolderType {
     public var category: TCXCategoryFolderNames = .unspecified
     
-    private var preTag = ""
-    
-    var name: String?
+    var name: String
     var folder = [TCXWorkoutsFolder]()
-    var workoutNameReference: TCXRestrictedToken?
+    var workoutNameReference: TCXRestrictedToken? // [min 1, max 15]chars
     var extensions: TCXExtensions?
+    
+    public init(name: String) {
+        self.name = name
+    }
 }
 
 public final class TCXCoursesFolder: TCXElement { // shouldn't conform to TCXFolderType

@@ -29,13 +29,13 @@ public class TCXRoot: TCXElement {
         return "TrainingCenterDatabase"
     }
     
-    override func addOpenTag(toTCX tcx: inout String, indentationLevel: Int) {
+    override func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
         let xmlns = TCXAttribute(name: "xmlns", value: self.xmlns)
         let xmlnsXSI = TCXAttribute(name: "xmlns:xsi", value: self.xsi)
         let location = TCXAttribute(name: "xmlns:schemaLocation", value: self.schemaLocation)
         
         tcx.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n")
-        tcx.appendOpenTag(indentation: indent(level: indentationLevel), tag: tagName(), attributes: [xmlns, xmlnsXSI, location])
+        tcx.appendOpenTag(indentation: indent(level: indentationLevel level), tag: tagName(), attributes: [xmlns, xmlnsXSI, location])
     }
     
 }

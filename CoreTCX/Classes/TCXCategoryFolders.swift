@@ -29,9 +29,9 @@ public final class TCXHistoryFolder: TCXElement, TCXFolderType {
         self.name = name
     }
     
-    override func addOpenTag(toTCX tcx: inout String, indentationLevel: Int) {
+    override func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
         let nameAttr = TCXAttribute(name: "Name", value: name)
-        tcx.appendOpenTag(indentation: indent(level: indentationLevel), tag: tagName(), attributes: [nameAttr])
+        tcx.appendOpenTag(indentation: indent(level: level), tag: tagName(), attributes: [nameAttr])
     }
     
     override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
@@ -62,14 +62,24 @@ public final class TCXHistoryFolder: TCXElement, TCXFolderType {
 public final class TCXWorkoutsFolder: TCXElement, TCXFolderType {
     public var category: TCXCategoryFolderNames = .unspecified
     
-    var name: String
-    var folder = [TCXWorkoutsFolder]()
-    var workoutNameReference: TCXRestrictedToken? // [min 1, max 15]chars
+    public var name: String
+    public var folder = [TCXWorkoutsFolder]()
+    public var workoutNameReferences = [TCXRestrictedToken]() // [min 1, max 15]chars
     var extensions: TCXExtensions?
     
     public init(name: String) {
         self.name = name
     }
+    
+    override func tagName() -> String {
+        return category.rawValue
+    }
+    
+    override func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
+        let attr = TCXAttribute(name: "Name", value: name)
+        tcx.appendOpenTag(indentation: indent(level: level), tag: tagName(), attributes: [attr])
+    }
+    
 }
 
 public final class TCXCoursesFolder: TCXElement { // shouldn't conform to TCXFolderType

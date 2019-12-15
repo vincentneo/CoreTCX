@@ -62,8 +62,8 @@ open class TCXElement: NSObject {
     ///
     ///         <trk> // an open tag
     ///         <wpt lat=1.0 lon=2.0> // an open tag with extra attributes
-    func addOpenTag(toTCX tcx: inout String, indentationLevel: Int) {
-        tcx.append(String(format: "%@<%@>\r\n", indent(level: indentationLevel), self.tagName()))
+    func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
+        tcx.append(String(format: "%@<%@>\r\n", indent(level: level), self.tagName()))
     }
     
     /// Implements a child tag after an open tag, before a close tag.

@@ -24,9 +24,9 @@ public final class TCXWeek: TCXElement {
         return "Week"
     }
     
-    override func addOpenTag(toTCX tcx: inout String, indentationLevel: Int) {
+    override func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
         let dayAttr = TCXAttribute(name: "StartDay", value: DateConvert.toString(with: .day, from: startDay)!)
-        tcx.appendOpenTag(indentation: indent(level: indentationLevel), tag: tagName(), attributes: [dayAttr])
+        tcx.appendOpenTag(indentation: indent(level: level), tag: tagName(), attributes: [dayAttr])
     }
     
     override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
@@ -40,5 +40,26 @@ open class TCXExtensions: TCXElement {
     
 }
 
-typealias TCXRestrictedToken = String
+public enum TCXTokenType: String {
+    case workouts = "WorkoutNameRef"
+}
+
+public class TCXRestrictedToken: TCXElement {
+    var id: String
+    var type: TCXTokenType = .workouts // for now
+    
+    override func tagName() -> String {
+        return type.rawValue // maybe shared. implement enum for all shared types
+    }
+    
+    public init(id: String) {
+        self.id = id
+    }
+    
+    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        addProperty(forValue: id, tcx: &tcx, tagName: "Id", indentationLevel: indentationLevel)
+    }
+}
+
+//typealias TCXRestrictedToken = String
 //typealias TCXActivityReference = Date

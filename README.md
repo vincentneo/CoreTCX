@@ -2,14 +2,19 @@
 
 [![CI Status](https://img.shields.io/travis/vincentneo/CoreTCX.svg?style=flat)](https://travis-ci.org/vincentneo/CoreTCX)
 [![Version](https://img.shields.io/cocoapods/v/CoreTCX.svg?style=flat)](https://cocoapods.org/pods/CoreTCX)
-[![License](https://img.shields.io/cocoapods/l/CoreTCX.svg?style=flat)](https://cocoapods.org/pods/CoreTCX)
+[![Swift Version](https://img.shields.io/badge/Swift-5.0-orange.svg)](https://swift.org/blog/swift-5-released/)
+[![TCX Version](https://img.shields.io/badge/tcx-2.0-darkblue.svg)](https://support.garmin.com/en-SG/?faq=VgxTchxqKO4ZbL0ucq05K8)
+![Current Project Status](https://img.shields.io/badge/status-work%20in%20progress-yellow)
+[![License](http://img.shields.io/:license-mit-black.svg)](http://doge.mit-license.org)
 [![Platform](https://img.shields.io/cocoapods/p/CoreTCX.svg?style=flat)](https://cocoapods.org/pods/CoreTCX)
+
+## Description
+
+The goal of CoreTCX, is to bring easier workability, when handling TCX files in iOS. This library will be able to parse and create TCX files that are valid according to the [Garmin Training Center XML v2](https://www8.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd).
 
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
 
 ## Installation
 

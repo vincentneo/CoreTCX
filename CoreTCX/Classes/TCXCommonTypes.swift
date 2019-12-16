@@ -42,11 +42,15 @@ open class TCXExtensions: TCXElement {
 
 public enum TCXTokenType: String {
     case workouts = "WorkoutNameRef"
+    case courses = "CourseNameRef"
+    case undefined
 }
 
 public class TCXRestrictedToken: TCXElement {
-    var id: String
-    var type: TCXTokenType = .workouts // for now
+    
+    public var id: String
+    
+    internal var type: TCXTokenType = .undefined
     
     override func tagName() -> String {
         return type.rawValue // maybe shared. implement enum for all shared types
@@ -61,5 +65,3 @@ public class TCXRestrictedToken: TCXElement {
     }
 }
 
-//typealias TCXRestrictedToken = String
-//typealias TCXActivityReference = Date

@@ -76,6 +76,24 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
     
 }
 
+// MARK: MultiSport element within History
+
+// NOTE:- TO REDO IN NEXT COMMIT: REINTEGRATE multisport folder to HISTORY
+public final class TCXMultiSportFolder: TCXElement {
+    var name: String
+    var folder = [TCXMultiSportFolder]()
+    var activityReference = [TCXActivityReference]()
+    var week = [TCXWeek]()
+    var notes: String?
+    var extensions: TCXExtensions?
+    
+    public init(name: String) {
+        self.name = name
+    }
+    
+    
+}
+
 public final class TCXCourses: TCXElement {
     var folder: TCXCoursesFolder?
     var extensions: TCXExtensions?

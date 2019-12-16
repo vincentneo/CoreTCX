@@ -35,7 +35,7 @@ public class TCXRoot: TCXElement {
         let location = TCXAttribute(name: "xmlns:schemaLocation", value: self.schemaLocation)
         
         tcx.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n")
-        tcx.appendOpenTag(indentation: indent(level: indentationLevel level), tag: tagName(), attributes: [xmlns, xmlnsXSI, location])
+        tcx.appendOpenTag(indentation: indent(level: level), tag: tagName(), attributes: [xmlns, xmlnsXSI, location])
     }
     
 }

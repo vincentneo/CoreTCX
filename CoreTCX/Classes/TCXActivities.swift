@@ -21,29 +21,85 @@ public final class TCXActivity: TCXElement {
         self.sport = sportType
     }
     
+    override func tagName() -> String {
+        return "Activity"
+    }
+    
 }
 
 public enum TCXSport: String {
-    case running, biking, other
+    case running = "Running"
+    case biking = "Biking"
+    case other = "Other"
 }
 
-class TCXActivityLap: TCXElement {
-    var startTime = Date()
-    var totalTimeSeconds: Double?
-    var distance: Double?
-    var maxSpeed: Double?
-    var calories: UInt16?
-    var avgHeartRate: TCXHeartRateInBeatsPerMinute?
-    var maxHeartRate: TCXHeartRateInBeatsPerMinute?
-    var intensity: TCXIntensity?
-    var cadence: TCXCadenceValue?
-    var triggerMethod: TCXTriggerMethod?
-    var track = [TCXTrack]()
-    var notes: String?
-    var extensions: TCXExtensions?
+public final class TCXActivityLap: TCXElement {
+    public var startTime: Date
+    
+    public var totalTimeSeconds: Double?
+    public var distance: Double?
+    public var maxSpeed: Double?
+    public var calories: UInt16?
+    public var avgHeartRate: TCXHeartRate?
+    public var maxHeartRate: TCXHeartRate?
+    public var intensity: TCXIntensity?
+    public var cadence: TCXCadenceValue?
+    public var triggerMethod: TCXTriggerMethod?
+    public var track = [TCXTrack]()
+    public var notes: String?
+    public var extensions: TCXExtensions?
+    
+    private func autoTagChild() {
+        self.avgHeartRate?.type = .avg
+        self.maxHeartRate?.type = .max
+    }
+    override func tagName() -> String {
+        return "Lap"
+    }
+    
+    public override init() {
+        self.startTime = Date()
+    }
+    
+    public init(startTime: Date) {
+        self.startTime = startTime
+    }
+    
+    override func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
+        //let date = TCXAttribute(name: "StartTime", value: startTime)
+    }
+    
+    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        
+        autoTagChild()
+        
+        if let tTS = totalTimeSeconds {
+            addProperty(forValue: tTS, tcx: &tcx, tagName: "TotalTimeSeconds", indentationLevel:
+                indentationLevel)
+        }
+        
+        if let dist = distance {
+            addProperty(forValue: dist, tcx: &tcx, tagName: "DistanceMeters", indentationLevel: indentationLevel)
+        }
+        
+        if let max = maxSpeed {
+            addProperty(forValue: max, tcx: &tcx, tagName: "MaximumSpeed", indentationLevel: indentationLevel)
+        }
+        
+        if let calories = calories {
+            let intCal = Int(calories)
+            
+            addProperty(forValue: intCal, tcx: &tcx, tagName: "Calories", indentationLevel: indentationLevel)
+        }
+        
+        self.avgHeartRate?.tcxTagging(&tcx, indentationLevel: indentationLevel)
+        self.maxHeartRate?.tcxTagging(&tcx, indentationLevel: indentationLevel)
+        
+        
+    }
 }
 
-class TCXTrack: TCXElement {
+public final class TCXTrack: TCXElement {
     var trackpoint = [TCXTrackPoint]()
 }
 
@@ -51,19 +107,42 @@ class TCXTrackPoint: TCXElement {
     var time: Date?
     var altitude: Double?
     var distance: Double?
-    var heartRate: TCXHeartRateInBeatsPerMinute?
+    var heartRate: TCXHeartRate?
     var cadence: TCXCadenceValue?
     var sensorState: TCXSensorState?
 }
 
-typealias TCXHeartRateInBeatsPerMinute = UInt8
-
-enum TCXIntensity {
-    case active, resting
+public enum TCXHeartRateType: String {
+    case avg = "AverageHeartRateBpm"
+    case max = "MaximumHeartRateBpm", undefined
 }
-typealias TCXCadenceValue = UInt8
 
-enum TCXTriggerMethod {
+public class TCXHeartRate: TCXElement {
+    var type = TCXHeartRateType.undefined
+    
+    public var value: UInt8
+    
+    public init(inBPM value: UInt8) {
+        self.value = value
+    }
+    
+    override func tagName() -> String {
+        return type.rawValue
+    }
+    
+    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        let strVal = String(value)
+        addProperty(forValue: strVal, tcx: &tcx, tagName: "Value", indentationLevel: indentationLevel)
+    }
+}
+
+public enum TCXIntensity: String {
+    case active = "Active"
+    case resting = "Resting"
+}
+public typealias TCXCadenceValue = UInt8
+
+public enum TCXTriggerMethod {
     case manual, distance, location, time, heartRate
 }
 

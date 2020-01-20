@@ -109,7 +109,7 @@ open class TCXElement: NSObject {
     /// - **Example**:
     ///
     ///       <ele>100</ele> // 100 is an example value
-    func addProperty(forIntegerValue value: Int?, tcx: inout String, tagName: String, indentationLevel: Int) {
+    func addProperty(forValue value: Int?, tcx: inout String, tagName: String, indentationLevel: Int) {
         if let validValue = value {
             addProperty(forValue: String(validValue), tcx: &tcx, tagName: tagName, indentationLevel: indentationLevel, defaultValue: nil, attribute: nil)
         }
@@ -128,7 +128,7 @@ open class TCXElement: NSObject {
     /// - **Example**:
     ///
     ///       <ele>100.21345</ele> // 100.21345 is an example value
-    func addProperty(forDoubleValue value: Double?, tcx: inout String, tagName: String, indentationLevel: Int) {
+    func addProperty(forValue value: Double?, tcx: inout String, tagName: String, indentationLevel: Int) {
         if let validValue = value {
             addProperty(forValue: String(validValue), tcx: &tcx, tagName: tagName, indentationLevel: indentationLevel, defaultValue: nil, attribute: nil)
         }

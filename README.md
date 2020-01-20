@@ -8,6 +8,12 @@
 [![License](http://img.shields.io/:license-mit-black.svg)](http://doge.mit-license.org)
 [![Platform](https://img.shields.io/cocoapods/p/CoreTCX.svg?style=flat)](https://cocoapods.org/pods/CoreTCX)
 
+## Work In Progress
+
+This project is taking a long time, but I can assure you, that I will finish it up, one day. 
+
+If anyone has could supply me some TCX files that you have, I would be very grateful. It will only be used to test the project, and to check if some parts of my code are correctly implemented. I find that its easier to get GPX files than TCX files, personally. To get in touch with me, you can email me at **vincent-programs (at) outlook (dot) com**
+
 ## Description
 
 The goal of CoreTCX, is to bring easier workability, when handling TCX files in iOS. This library will be able to parse and create TCX files that are valid according to the [Garmin Training Center XML v2](https://www8.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd).

@@ -14,12 +14,12 @@ import Foundation
 public final class TCXHistoryFolder: TCXElement, TCXFolderType {
     public var category: TCXCategoryFolderNames = .unspecified
     
-    var name: String
-    var folders = [TCXHistoryFolder]()
-    var activityRefs = [TCXActivityReference]()
-    var weeks = [TCXWeek]()
-    var notes: String?
-    var extensions: TCXExtensions?
+    public var name: String
+    public var folders = [TCXHistoryFolder]()
+    public var activityRefs = [TCXActivityReference]()
+    public var weeks = [TCXWeek]()
+    public var notes: String?
+    public var extensions: TCXExtensions?
     
     override func tagName() -> String {
         return category.rawValue
@@ -103,11 +103,11 @@ public final class TCXWorkoutsFolder: TCXElement, TCXFolderType {
 
 public final class TCXCoursesFolder: TCXElement { // shouldn't conform to TCXFolderType
     
-    var name: String
-    var folders = [TCXCoursesFolder]()
-    var nameReferences = [TCXRestrictedToken]()
-    var notes: String?
-    var extensions: TCXExtensions?
+    public var name: String
+    public var folders = [TCXCoursesFolder]()
+    public var nameReferences = [TCXRestrictedToken]()
+    public var notes: String?
+    public var extensions: TCXExtensions?
     
     public init(name: String) {
         self.name = name

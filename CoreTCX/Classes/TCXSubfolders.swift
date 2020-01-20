@@ -21,6 +21,7 @@ public enum TCXCategoryFolderNames: String {
     case running = "Running"
     case biking = "Biking"
     case other = "Other"
+    case multiSport = "MultiSport"
     case unspecified = "Unknown"
 }
 
@@ -28,7 +29,7 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
     public var running: folderType?
     public var biking: folderType?
     public var other: folderType?
-    public var multiSport: TCXMultiSportFolder?
+    public var multiSport: TCXHistoryFolder?
     public var extensions: TCXExtensions?
     
     /// Only call when tagging.
@@ -36,6 +37,9 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
         running?.category = .running
         biking?.category = .biking
         other?.category = .other
+        if folderType.self == TCXHistoryFolder.self {
+            multiSport?.category = .multiSport
+        }
     }
     
     override func tagName() -> String {
@@ -66,7 +70,7 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
             extensions.tcxTagging(&tcx, indentationLevel: indentationLevel)
         }
         
-        // MultiSport tag is only written if folder is of type History_t
+        // MultiSport tag is only written if folder is of type `History_t`
         if folderType.self == TCXHistoryFolder.self {
             if let multiSport = multiSport {
                 multiSport.tcxTagging(&tcx, indentationLevel: indentationLevel)
@@ -76,26 +80,13 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
     
 }
 
-// MARK: MultiSport element within History
-
-// NOTE:- TO REDO IN NEXT COMMIT: REINTEGRATE multisport folder to HISTORY
-public final class TCXMultiSportFolder: TCXElement {
-    var name: String
-    var folder = [TCXMultiSportFolder]()
-    var activityReference = [TCXActivityReference]()
-    var week = [TCXWeek]()
-    var notes: String?
-    var extensions: TCXExtensions?
-    
-    public init(name: String) {
-        self.name = name
-    }
-    
-    
-}
-
 public final class TCXCourses: TCXElement {
     var folder: TCXCoursesFolder?
     var extensions: TCXExtensions?
+    
+    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        self.folder?.tcxTagging(&tcx, indentationLevel: indentationLevel)
+        self.extensions?.tcxTagging(&tcx, indentationLevel: indentationLevel)
+    }
 }
 

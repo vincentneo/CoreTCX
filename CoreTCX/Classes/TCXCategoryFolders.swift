@@ -11,6 +11,7 @@ import Foundation
 
 // MARK:- History Subfolder
 
+/// `HistoryFolder_t`
 public final class TCXHistoryFolder: TCXElement, TCXFolderType {
     public var category: TCXCategoryFolderNames = .unspecified
     
@@ -61,6 +62,7 @@ public final class TCXHistoryFolder: TCXElement, TCXFolderType {
 
 // MARK:- Workouts Subfolder
 
+/// `Workouts_t`
 public final class TCXWorkoutsFolder: TCXElement, TCXFolderType {
     public var category: TCXCategoryFolderNames = .unspecified
     
@@ -101,6 +103,7 @@ public final class TCXWorkoutsFolder: TCXElement, TCXFolderType {
 
 // MARK:- Courses Subfolder
 
+/// `CourseFolder_t`
 public final class TCXCoursesFolder: TCXElement { // shouldn't conform to TCXFolderType
     
     public var name: String

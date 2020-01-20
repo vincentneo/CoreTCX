@@ -25,6 +25,7 @@ public enum TCXCategoryFolderNames: String {
     case unspecified = "Unknown"
 }
 
+/// `History_t` or `Workouts_t`
 public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
     public var running: folderType?
     public var biking: folderType?
@@ -80,6 +81,7 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
     
 }
 
+/// `Courses_t`
 public final class TCXCourses: TCXElement {
     var folder: TCXCoursesFolder?
     var extensions: TCXExtensions?

@@ -11,15 +11,19 @@ class TCXActivityList: TCXElement {
     var activity = [TCXActivity]()
 }
 
-class TCXActivity: TCXElement {
-    var sport: TCXSport?
+public final class TCXActivity: TCXElement {
+    public var sport: TCXSport
     var Id: Date?
     var lap: TCXActivityLap?
     var notes: String?
     
+    public init(sportType: TCXSport) {
+        self.sport = sportType
+    }
+    
 }
 
-enum TCXSport: String {
+public enum TCXSport: String {
     case running, biking, other
 }
 

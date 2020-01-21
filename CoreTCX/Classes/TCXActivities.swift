@@ -43,7 +43,7 @@ public final class TCXActivityLap: TCXElement {
     public var avgHeartRate: TCXHeartRate?
     public var maxHeartRate: TCXHeartRate?
     public var intensity: TCXIntensity?
-    public var cadence: TCXCadenceValue?
+    public var cadence: UInt8?
     public var triggerMethod: TCXTriggerMethod?
     public var track = [TCXTrack]()
     public var notes: String?
@@ -108,7 +108,7 @@ class TCXTrackPoint: TCXElement {
     var altitude: Double?
     var distance: Double?
     var heartRate: TCXHeartRate?
-    var cadence: TCXCadenceValue?
+    var cadence: UInt8?
     var sensorState: TCXSensorState?
 }
 
@@ -140,7 +140,6 @@ public enum TCXIntensity: String {
     case active = "Active"
     case resting = "Resting"
 }
-public typealias TCXCadenceValue = UInt8
 
 public enum TCXTriggerMethod {
     case manual, distance, location, time, heartRate

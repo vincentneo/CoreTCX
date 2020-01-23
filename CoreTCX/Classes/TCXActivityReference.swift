@@ -8,6 +8,10 @@
 import Foundation
 
 public class TCXActivityReference: TCXElement {
+    public func tagName() -> String {
+        return ""
+    }
+    
     
     public var id: Date
     
@@ -15,7 +19,7 @@ public class TCXActivityReference: TCXElement {
         id = activityRefId
     }
     
-    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         guard let formattedDate = DateConvert.toString(with: .ISO8601, from: id) else { return }
         
         addProperty(forValue: formattedDate, tcx: &tcx, tagName: "Id", indentationLevel: indentationLevel)

@@ -10,16 +10,16 @@ import Foundation
 // MARK:- Root Folders
 
 /// `Folders_t`
-public class TCXFolders: TCXElement {
+public class TCXFolders: NSObject, TCXElement {
     public var history: TCXSubfolders<TCXHistoryFolder>?
     public var workouts: TCXSubfolders<TCXWorkoutsFolder>?
     public var courses: TCXCourses?
     
-    override func tagName() -> String {
+    public func tagName() -> String {
         return "Folders"
     }
     
-    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         if let history = history {
             history.tcxTagging(&tcx, indentationLevel: indentationLevel)
         }

@@ -7,13 +7,34 @@
 
 import Foundation
 
-class TCXWorkouts: TCXElement {
+/*
+public final class TCXWorkouts: NSObject, TCXElement {
     
     var workout: [TCXWorkout]?
     
+    public init(workouts: [TCXWorkout]) {
+        self.workout = workouts
+    }
+
+}
+*/
+extension Array: TCXElement where Element : TCXWorkout {
+    public func tagName() -> String {
+        return "Workouts"
+    }
+    
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        forEach { element in
+            element.tcxTagging(&tcx, indentationLevel: indentationLevel)
+        }
+    }
 }
 
-class TCXWorkout: TCXElement {
+public class TCXWorkout: TCXElement {
+    public func tagName() -> String {
+        return "Workout"
+    }
+    
     var sport: String?
     var name: TCXRestrictedToken?
     var step = [TCXAbstractStep]()

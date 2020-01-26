@@ -19,10 +19,13 @@ class ViewController: UIViewController {
         historybike.notes = "This should work."
         historybike.weeks.append(TCXWeek())
         historybike.activityRefs.append(TCXActivityReference(activityRefId: Date()))
+        let tx = TCXMultiSportSession()
+        tx.firstSport = TCXActivity(sportType: .biking)
         
-
+        
         print(tcxfolder.tcxFormatted())
         print([TCXWorkout(), TCXWorkout()].tcxFormatted())
+        print(tx.tcxFormatted())
         //print(TCXWorkout().tcxFormatted())
 
 

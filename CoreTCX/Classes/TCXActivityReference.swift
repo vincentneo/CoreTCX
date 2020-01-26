@@ -13,8 +13,11 @@ public class TCXActivityReference: NSObject, TCXElement {
         return "ActivityRef"
     }
     
-    
     public var id: Date
+    
+    public override init() {
+        id = Date()
+    }
     
     public init(activityRefId: Date) {
         id = activityRefId

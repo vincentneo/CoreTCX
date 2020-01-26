@@ -8,17 +8,51 @@
 import Foundation
 
 class TCXActivityList: TCXElement {
-    func tagName() -> String {
-        fatalError()
-    }
+    
     var activity = [TCXActivity]()
+    // var multiSportSession =
+    
+    func tagName() -> String {
+        return "Activities"
+    }
+    
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        for eachActivity in activity {
+            eachActivity.tcxTagging(&tcx, indentationLevel: indentationLevel)
+        }
+    }
+}
+public final class TCXMultiSportSession: TCXElement {
+    func tagName() -> String {
+        return "MultiSportSession"
+    }
+    
+    public var id: Date?
+    public var firstSport: TCXActivity?
+    public var nextSport = [TCXActivity]() // implement nextSport element
+    
+    public init() {
+        
+    }
+    
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        if let id = id {
+            addProperty(forValue: DateConvert.toString(with: .ISO8601UTC, from: id), tcx: &tcx, tagName: "Id", indentationLevel: indentationLevel)
+        }
+        if let fS = firstSport {
+            tcx.append(String(format: "%@<%@>\r\n", indent(level: indentationLevel), "FirstSport"))
+            fS.tcxTagging(&tcx, indentationLevel: indentationLevel + 1)
+            tcx.append(String(format: "%@</%@>\r\n", indent(level: indentationLevel), "FirstSport"))
+        }
+        
+    }
 }
 
 public final class TCXActivity: TCXElement {
     public var sport: TCXSport
-    var Id: Date?
-    var lap: TCXActivityLap?
-    var notes: String?
+    public var Id: Date?
+    public var lap: TCXActivityLap?
+    public var notes: String?
     
     public init(sportType: TCXSport) {
         self.sport = sportType

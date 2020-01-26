@@ -12,6 +12,7 @@ class DateConvert {
     
     enum types {
         case ISO8601
+        case ISO8601UTC
         case day
     }
     
@@ -25,6 +26,12 @@ class DateConvert {
     /// ISO8601 formatter within CoreTCX.
     private static let ISO8601Formatter: DateFormatter = {
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        return formatter
+    }()
+    
+    /// ISO8601 formatter for UTC time.
+    private static let ISO8601UTC: DateFormatter = {
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         return formatter
     }()
     
@@ -52,6 +59,7 @@ class DateConvert {
         
         switch type {
         case .ISO8601: return ISO8601Formatter.string(from: validDate)
+        case .ISO8601UTC: return ISO8601UTC.string(from: validDate)
         case .day: return dayFormatter.string(from: validDate)
         }
     }

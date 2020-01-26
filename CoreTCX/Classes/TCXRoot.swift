@@ -38,4 +38,8 @@ public class TCXRoot: NSObject, TCXElement {
         tcx.appendOpenTag(indentation: indent(level: level), tag: tagName(), attributes: [xmlns, xmlnsXSI, location])
     }
     
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        
+    }
+    
 }

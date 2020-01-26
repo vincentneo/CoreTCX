@@ -8,6 +8,9 @@
 import Foundation
 
 class TCXActivityList: TCXElement {
+    func tagName() -> String {
+        fatalError()
+    }
     var activity = [TCXActivity]()
 }
 
@@ -100,10 +103,18 @@ public final class TCXActivityLap: TCXElement {
 }
 
 public final class TCXTrack: TCXElement {
+    public func tagName() -> String {
+        fatalError()
+    }
+    
     var trackpoint = [TCXTrackPoint]()
 }
 
 class TCXTrackPoint: TCXElement {
+    func tagName() -> String {
+        fatalError()
+    }
+    
     var time: Date?
     var altitude: Double?
     var distance: Double?
@@ -146,6 +157,10 @@ public enum TCXTriggerMethod {
 }
 
 class TCXPosition: TCXElement {
+    func tagName() -> String {
+        fatalError()
+    }
+    
     var latitude: Double?
     var longitude: Double?
 }

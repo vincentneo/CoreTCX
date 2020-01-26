@@ -19,16 +19,26 @@ import Foundation
  */
 private var tcx = String()
 
-public protocol TCXElement {
+public protocol TCXPublicElement {
+    func tcxFormatted() -> String
+    
+}
+
+protocol TCXElement: TCXPublicElement {
+    
     func tagName() -> String
+    func addOpenTag(toTCX: inout String, indentationLevel: Int)
+    func addChildTag(toTCX: inout String, indentationLevel: Int)
+    func addCloseTag(toTCX: inout String, indentationLevel: Int)
 }
 
 extension TCXElement {
-    public init() { self.init() }
-    
+    //public init() { self.init() }
+    /*
     public func tagName() -> String {
-        fatalError("not implemented")
+        return "null"//fatalError("not implemented")
     }
+    */
     public func tcxFormatted() -> String {
         self.tcxTagging(&tcx, indentationLevel: 0)
         return tcx as String
@@ -52,7 +62,7 @@ extension TCXElement {
     ///
     ///         <trk> // an open tag
     ///         <wpt lat=1.0 lon=2.0> // an open tag with extra attributes
-    func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
+    public func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
         tcx.append(String(format: "%@<%@>\r\n", indent(level: level), self.tagName()))
     }
     
@@ -68,7 +78,7 @@ extension TCXElement {
     ///         <trkpt lat=4.0 lon=3.0> // an open tag
     ///             <ele>20.19</ele>    // a child tag
     ///         </trkpt>                // a close tag
-    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+    public func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         // Override to subclasses
     }
     
@@ -82,7 +92,7 @@ extension TCXElement {
     /// - **Example**:
     ///
     ///         </metadata> // a close tag
-    func addCloseTag(toTCX tcx: inout String, indentationLevel: Int) {
+    public func addCloseTag(toTCX tcx: inout String, indentationLevel: Int) {
         tcx.append(String(format: "%@</%@>\r\n", indent(level: indentationLevel), self.tagName()))
     }
     

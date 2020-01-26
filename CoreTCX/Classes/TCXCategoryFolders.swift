@@ -12,7 +12,7 @@ import Foundation
 // MARK:- History Subfolder
 
 /// `HistoryFolder_t`
-public final class TCXHistoryFolder: NSObject, TCXElement, TCXFolderType {
+public final class TCXHistoryFolder: _TCXElement, TCXFolderType {
     public var category: TCXCategoryFolderNames = .unspecified
     
     public var name: String
@@ -22,7 +22,7 @@ public final class TCXHistoryFolder: NSObject, TCXElement, TCXFolderType {
     public var notes: String?
     public var extensions: TCXExtensions?
     
-    public func tagName() -> String {
+    public override func tagName() -> String {
         return category.rawValue
     }
     
@@ -63,7 +63,7 @@ public final class TCXHistoryFolder: NSObject, TCXElement, TCXFolderType {
 // MARK:- Workouts Subfolder
 
 /// `Workouts_t`
-public final class TCXWorkoutsFolder: NSObject, TCXElement, TCXFolderType {
+public final class TCXWorkoutsFolder: _TCXElement, TCXFolderType {
     public var category: TCXCategoryFolderNames = .unspecified
     
     public var name: String
@@ -75,7 +75,7 @@ public final class TCXWorkoutsFolder: NSObject, TCXElement, TCXFolderType {
         self.name = name
     }
     
-    public func tagName() -> String {
+    override public func tagName() -> String {
         return category.rawValue
     }
     

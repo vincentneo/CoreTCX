@@ -37,6 +37,10 @@ public final class TCXWeek: TCXElement {
 }
 
 open class TCXExtensions: TCXElement {
+    public func tagName() -> String {
+        fatalError()
+    }
+    
     
 }
 

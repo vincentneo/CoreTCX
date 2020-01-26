@@ -7,7 +7,14 @@
 
 import Foundation
 
-public protocol TCXFolderType: TCXElement {
+public class _TCXElement: NSObject, TCXElement {
+    public func tagName() -> String {
+        fatalError()
+    }
+    
+}
+
+public protocol TCXFolderType: _TCXElement {
     var category: TCXCategoryFolderNames { get set }
     //var categoryTag: TCXCategoryFolderNames { get }
 }
@@ -26,13 +33,16 @@ public enum TCXCategoryFolderNames: String {
 }
 
 /// `History_t` or `Workouts_t`
-public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
+public class TCXSubfolders<folderType: TCXFolderType>: NSObject, TCXElement {
     public var running: folderType?
     public var biking: folderType?
     public var other: folderType?
     public var multiSport: TCXHistoryFolder?
     public var extensions: TCXExtensions?
     
+    public override init() {
+        super.init()
+    }
     /// Only call when tagging.
     private func autoTagCategories() {
         running?.category = .running

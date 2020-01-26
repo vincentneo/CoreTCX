@@ -14,9 +14,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         var tcxfolder = TCXSubfolders<TCXHistoryFolder>()
+        tcxfolder.biking = TCXHistoryFolder(name: "F1")
     
 
         print(tcxfolder.tcxFormatted())
+        print([TCXWorkout(), TCXWorkout()].tcxFormatted())
+        //print(TCXWorkout().tcxFormatted())
+
 
         // Do any additional setup after loading the view, typically from a nib.
     }

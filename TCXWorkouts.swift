@@ -18,10 +18,14 @@ public final class TCXWorkouts: NSObject, TCXElement {
 
 }
 */
-extension Array: TCXElement where Element : TCXWorkout {
+
+extension Array: TCXPublicElement where Element : TCXWorkout {
     public func tagName() -> String {
         return "Workouts"
     }
+}
+
+extension Array: TCXElement where Element : TCXWorkout {
     
     func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         forEach { element in
@@ -30,7 +34,7 @@ extension Array: TCXElement where Element : TCXWorkout {
     }
 }
 
-public class TCXWorkout: TCXElement {
+public class TCXWorkout: NSObject, TCXElement {
     public func tagName() -> String {
         return "Workout"
     }
@@ -43,9 +47,17 @@ public class TCXWorkout: TCXElement {
     //var creator: abstractsource
     var extensions: TCXExtensions?
     
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        addProperty(forValue: 330, tcx: &tcx, tagName: "Test", indentationLevel: indentationLevel)
+    }
+    
 }
 
 class TCXAbstractStep: TCXElement {
+    func tagName() -> String {
+        fatalError()
+    }
+    
     private var privateID = Int()
     
     public var stepID: Int {

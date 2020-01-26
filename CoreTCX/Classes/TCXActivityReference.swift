@@ -7,7 +7,9 @@
 
 import Foundation
 
-public class TCXActivityReference: TCXElement {
+public class TCXActivityReference: NSObject, TCXElement {
+    
+
     public func tagName() -> String {
         return ""
     }

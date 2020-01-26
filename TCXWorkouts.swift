@@ -7,13 +7,37 @@
 
 import Foundation
 
-class TCXWorkouts: TCXElement {
+/*
+public final class TCXWorkouts: NSObject, TCXElement {
     
     var workout: [TCXWorkout]?
     
+    public init(workouts: [TCXWorkout]) {
+        self.workout = workouts
+    }
+
+}
+*/
+
+extension Array: TCXPublicElement where Element : TCXWorkout {}
+
+extension Array: TCXElement where Element : TCXWorkout {
+    func tagName() -> String {
+        return "Workouts"
+    }
+    
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        forEach { element in
+            element.tcxTagging(&tcx, indentationLevel: indentationLevel)
+        }
+    }
 }
 
-class TCXWorkout: TCXElement {
+public class TCXWorkout: NSObject, TCXElement {
+    func tagName() -> String {
+        return "Workout"
+    }
+    
     var sport: String?
     var name: TCXRestrictedToken?
     var step = [TCXAbstractStep]()
@@ -22,9 +46,17 @@ class TCXWorkout: TCXElement {
     //var creator: abstractsource
     var extensions: TCXExtensions?
     
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        addProperty(forValue: 330, tcx: &tcx, tagName: "Test", indentationLevel: indentationLevel)
+    }
+    
 }
 
 class TCXAbstractStep: TCXElement {
+    func tagName() -> String {
+        fatalError()
+    }
+    
     private var privateID = Int()
     
     public var stepID: Int {

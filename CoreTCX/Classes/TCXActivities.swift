@@ -8,6 +8,9 @@
 import Foundation
 
 class TCXActivityList: TCXElement {
+    func tagName() -> String {
+        fatalError()
+    }
     var activity = [TCXActivity]()
 }
 
@@ -21,7 +24,7 @@ public final class TCXActivity: TCXElement {
         self.sport = sportType
     }
     
-    override func tagName() -> String {
+    func tagName() -> String {
         return "Activity"
     }
     
@@ -53,11 +56,11 @@ public final class TCXActivityLap: TCXElement {
         self.avgHeartRate?.type = .avg
         self.maxHeartRate?.type = .max
     }
-    override func tagName() -> String {
+    func tagName() -> String {
         return "Lap"
     }
     
-    public override init() {
+    public init() {
         self.startTime = Date()
     }
     
@@ -65,11 +68,11 @@ public final class TCXActivityLap: TCXElement {
         self.startTime = startTime
     }
     
-    override func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
-        //let date = TCXAttribute(name: "StartTime", value: startTime)
+    func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
+        //let date = TCXAttribute(name: "StartTime", value: DateConvert.toString(with: .day, from: startTime))
     }
     
-    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         
         autoTagChild()
         
@@ -100,10 +103,18 @@ public final class TCXActivityLap: TCXElement {
 }
 
 public final class TCXTrack: TCXElement {
+    func tagName() -> String {
+        fatalError()
+    }
+    
     var trackpoint = [TCXTrackPoint]()
 }
 
 class TCXTrackPoint: TCXElement {
+    func tagName() -> String {
+        fatalError()
+    }
+    
     var time: Date?
     var altitude: Double?
     var distance: Double?
@@ -126,11 +137,11 @@ public class TCXHeartRate: TCXElement {
         self.value = value
     }
     
-    override func tagName() -> String {
+    func tagName() -> String {
         return type.rawValue
     }
     
-    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         let strVal = String(value)
         addProperty(forValue: strVal, tcx: &tcx, tagName: "Value", indentationLevel: indentationLevel)
     }
@@ -146,6 +157,10 @@ public enum TCXTriggerMethod {
 }
 
 class TCXPosition: TCXElement {
+    func tagName() -> String {
+        fatalError()
+    }
+    
     var latitude: Double?
     var longitude: Double?
 }

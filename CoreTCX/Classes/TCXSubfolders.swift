@@ -7,15 +7,29 @@
 
 import Foundation
 
-public protocol TCXFolderType: TCXElement {
-    var category: TCXCategoryFolderNames { get set }
-    //var categoryTag: TCXCategoryFolderNames { get }
+public class TCXFolderType: NSObject, TCXElement {
+    func tagName() -> String { fatalError("Not implemented") }
+    var category: TCXCategoryFolderNames = .unspecified
+    
+    func tcxTagging(_ tcx: inout String, indentationLevel: Int) {
+        addOpenTag(toTCX: &tcx, indentationLevel: indentationLevel)
+        addChildTag(toTCX: &tcx, indentationLevel: indentationLevel + 1)
+        addCloseTag(toTCX: &tcx, indentationLevel: indentationLevel)
+    }
+    func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {}
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {}
+    func addCloseTag(toTCX tcx: inout String, indentationLevel: Int) {}
 }
-extension TCXFolderType {
+
+/*public protocol TCXFolderType: TCXFolderType {
+    
+    //var categoryTag: TCXCategoryFolderNames { get }
+}*/
+/*extension TCXFolderType {
     public var category: TCXCategoryFolderNames {
         get { return .unspecified }
     }
-}
+}*/
 
 public enum TCXCategoryFolderNames: String {
     case running = "Running"
@@ -26,13 +40,16 @@ public enum TCXCategoryFolderNames: String {
 }
 
 /// `History_t` or `Workouts_t`
-public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
+public class TCXSubfolders<folderType: TCXFolderType>: NSObject, TCXElement {
     public var running: folderType?
     public var biking: folderType?
     public var other: folderType?
     public var multiSport: TCXHistoryFolder?
     public var extensions: TCXExtensions?
     
+    public override init() {
+        super.init()
+    }
     /// Only call when tagging.
     private func autoTagCategories() {
         running?.category = .running
@@ -43,7 +60,7 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
         }
     }
     
-    override func tagName() -> String {
+    func tagName() -> String {
         if folderType.self == TCXHistoryFolder.self {
             return "History"
         }
@@ -55,7 +72,7 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
         }
     }
     
-    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         autoTagCategories()
         if let running = running {
             //running.type = .running
@@ -83,10 +100,14 @@ public class TCXSubfolders<folderType: TCXFolderType>: TCXElement {
 
 /// `Courses_t`
 public final class TCXCourses: TCXElement {
+    func tagName() -> String {
+        return "Courses"
+    }
+    
     var folder: TCXCoursesFolder?
     var extensions: TCXExtensions?
     
-    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         self.folder?.tcxTagging(&tcx, indentationLevel: indentationLevel)
         self.extensions?.tcxTagging(&tcx, indentationLevel: indentationLevel)
     }

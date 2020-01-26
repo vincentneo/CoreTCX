@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class TCXRoot: TCXElement {
+public class TCXRoot: NSObject, TCXElement {
     
     var folders: TCXFolders?
     var activities: TCXActivity?
@@ -25,11 +25,11 @@ public class TCXRoot: TCXElement {
     
     // MARK: Tag Generation
     
-    override func tagName() -> String {
+    func tagName() -> String {
         return "TrainingCenterDatabase"
     }
     
-    override func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
+    func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
         let xmlns = TCXAttribute(name: "xmlns", value: self.xmlns)
         let xmlnsXSI = TCXAttribute(name: "xmlns:xsi", value: self.xsi)
         let location = TCXAttribute(name: "xmlns:schemaLocation", value: self.schemaLocation)

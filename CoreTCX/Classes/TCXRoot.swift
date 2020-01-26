@@ -25,7 +25,7 @@ public class TCXRoot: NSObject, TCXElement {
     
     // MARK: Tag Generation
     
-    public func tagName() -> String {
+    func tagName() -> String {
         return "TrainingCenterDatabase"
     }
     

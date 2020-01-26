@@ -24,7 +24,7 @@ public final class TCXActivity: TCXElement {
         self.sport = sportType
     }
     
-    public func tagName() -> String {
+    func tagName() -> String {
         return "Activity"
     }
     
@@ -56,7 +56,7 @@ public final class TCXActivityLap: TCXElement {
         self.avgHeartRate?.type = .avg
         self.maxHeartRate?.type = .max
     }
-    public func tagName() -> String {
+    func tagName() -> String {
         return "Lap"
     }
     
@@ -103,7 +103,7 @@ public final class TCXActivityLap: TCXElement {
 }
 
 public final class TCXTrack: TCXElement {
-    public func tagName() -> String {
+    func tagName() -> String {
         fatalError()
     }
     
@@ -137,7 +137,7 @@ public class TCXHeartRate: TCXElement {
         self.value = value
     }
     
-    public func tagName() -> String {
+    func tagName() -> String {
         return type.rawValue
     }
     

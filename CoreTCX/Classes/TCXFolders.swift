@@ -15,7 +15,7 @@ public class TCXFolders: NSObject, TCXElement {
     public var workouts: TCXSubfolders<TCXWorkoutsFolder>?
     public var courses: TCXCourses?
     
-    public func tagName() -> String {
+    func tagName() -> String {
         return "Folders"
     }
     

@@ -17,15 +17,17 @@ import Foundation
  - Note:
  This class should not be used as is. To use its functionalities, please subclass it instead.
  */
-private var tcx = String()
-
+//private var tcx = String()
+private class TCXElementString {
+    var contents = String()
+}
 public protocol TCXPublicElement {
     func tcxFormatted() -> String
     
 }
 
 protocol TCXElement: TCXPublicElement {
-    
+    //var tcx: String { get set }
     func tagName() -> String
     func addOpenTag(toTCX: inout String, indentationLevel: Int)
     func addChildTag(toTCX: inout String, indentationLevel: Int)
@@ -34,14 +36,11 @@ protocol TCXElement: TCXPublicElement {
 
 extension TCXElement {
     //public init() { self.init() }
-    /*
-    public func tagName() -> String {
-        return "null"//fatalError("not implemented")
-    }
-    */
+    
     public func tcxFormatted() -> String {
-        self.tcxTagging(&tcx, indentationLevel: 0)
-        return tcx as String
+        var str = TCXElementString().contents
+        self.tcxTagging(&str, indentationLevel: 0)
+        return str as String
     }
     
     /// A method for invoking all tag-related methods
@@ -62,7 +61,7 @@ extension TCXElement {
     ///
     ///         <trk> // an open tag
     ///         <wpt lat=1.0 lon=2.0> // an open tag with extra attributes
-    public func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
+    func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
         tcx.append(String(format: "%@<%@>\r\n", indent(level: level), self.tagName()))
     }
     
@@ -78,7 +77,7 @@ extension TCXElement {
     ///         <trkpt lat=4.0 lon=3.0> // an open tag
     ///             <ele>20.19</ele>    // a child tag
     ///         </trkpt>                // a close tag
-    public func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         // Override to subclasses
     }
     
@@ -92,7 +91,7 @@ extension TCXElement {
     /// - **Example**:
     ///
     ///         </metadata> // a close tag
-    public func addCloseTag(toTCX tcx: inout String, indentationLevel: Int) {
+    func addCloseTag(toTCX tcx: inout String, indentationLevel: Int) {
         tcx.append(String(format: "%@</%@>\r\n", indent(level: indentationLevel), self.tagName()))
     }
     

@@ -19,13 +19,12 @@ public final class TCXWorkouts: NSObject, TCXElement {
 }
 */
 
-extension Array: TCXPublicElement where Element : TCXWorkout {
-    public func tagName() -> String {
-        return "Workouts"
-    }
-}
+extension Array: TCXPublicElement where Element : TCXWorkout {}
 
 extension Array: TCXElement where Element : TCXWorkout {
+    func tagName() -> String {
+        return "Workouts"
+    }
     
     func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         forEach { element in
@@ -35,7 +34,7 @@ extension Array: TCXElement where Element : TCXWorkout {
 }
 
 public class TCXWorkout: NSObject, TCXElement {
-    public func tagName() -> String {
+    func tagName() -> String {
         return "Workout"
     }
     

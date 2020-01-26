@@ -20,7 +20,7 @@ public final class TCXWeek: TCXElement {
          self.startDay = startDay
     }
     
-    public func tagName() -> String {
+    func tagName() -> String {
         return "Week"
     }
     
@@ -37,7 +37,7 @@ public final class TCXWeek: TCXElement {
 }
 
 open class TCXExtensions: TCXElement {
-    public func tagName() -> String {
+    func tagName() -> String {
         fatalError()
     }
     
@@ -56,7 +56,7 @@ public class TCXRestrictedToken: TCXElement {
     
     internal var type: TCXTokenType = .undefined
     
-    public func tagName() -> String {
+    func tagName() -> String {
         return type.rawValue // maybe shared. implement enum for all shared types
     }
     

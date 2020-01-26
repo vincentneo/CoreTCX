@@ -8,10 +8,9 @@
 import Foundation
 
 public class TCXActivityReference: NSObject, TCXElement {
-    
 
-    public func tagName() -> String {
-        return ""
+    func tagName() -> String {
+        return "ActivityRef"
     }
     
     

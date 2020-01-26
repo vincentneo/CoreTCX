@@ -12,9 +12,9 @@ import Foundation
 // MARK:- History Subfolder
 
 /// `HistoryFolder_t`
-public final class TCXHistoryFolder: _TCXElement, TCXFolderType {
-    public var category: TCXCategoryFolderNames = .unspecified
-    
+public final class TCXHistoryFolder: TCXFolderType {
+    //public var category: TCXCategoryFolderNames = .unspecified
+    //override var category: TCXCategoryFolderNames
     public var name: String
     public var folders = [TCXHistoryFolder]()
     public var activityRefs = [TCXActivityReference]()
@@ -29,13 +29,17 @@ public final class TCXHistoryFolder: _TCXElement, TCXFolderType {
     public init(name: String) {
         self.name = name
     }
-    
-    func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
+    override func tcxTagging(_ tcx: inout String, indentationLevel: Int) {
+        addOpenTag(toTCX: &tcx, indentationLevel: indentationLevel)
+        addChildTag(toTCX: &tcx, indentationLevel: indentationLevel + 1)
+        addCloseTag(toTCX: &tcx, indentationLevel: indentationLevel)
+    }
+    override func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
         let nameAttr = TCXAttribute(name: "Name", value: name)
         tcx.appendOpenTag(indentation: indent(level: level), tag: tagName(), attributes: [nameAttr])
     }
     
-    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         for folder in folders {
             folder.tcxTagging(&tcx, indentationLevel: indentationLevel)
         }
@@ -57,14 +61,15 @@ public final class TCXHistoryFolder: _TCXElement, TCXFolderType {
         }
     }
     
-    
+    override func addCloseTag(toTCX tcx: inout String, indentationLevel: Int) {
+        tcx.append(String(format: "%@</%@>\r\n", indent(level: indentationLevel), self.tagName()))
+    }
 }
 
 // MARK:- Workouts Subfolder
 
 /// `Workouts_t`
-public final class TCXWorkoutsFolder: _TCXElement, TCXFolderType {
-    public var category: TCXCategoryFolderNames = .unspecified
+public final class TCXWorkoutsFolder: TCXFolderType {
     
     public var name: String
     public var folders = [TCXWorkoutsFolder]()
@@ -75,16 +80,16 @@ public final class TCXWorkoutsFolder: _TCXElement, TCXFolderType {
         self.name = name
     }
     
-    override public func tagName() -> String {
+    override func tagName() -> String {
         return category.rawValue
     }
     
-    func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
+    override func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {
         let attr = TCXAttribute(name: "Name", value: name)
         tcx.appendOpenTag(indentation: indent(level: level), tag: tagName(), attributes: [attr])
     }
     
-    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         for folder in folders {
             folder.tcxTagging(&tcx, indentationLevel: indentationLevel)
         }
@@ -99,13 +104,17 @@ public final class TCXWorkoutsFolder: _TCXElement, TCXFolderType {
         }
     }
     
+    override func addCloseTag(toTCX tcx: inout String, indentationLevel: Int) {
+        tcx.append(String(format: "%@</%@>\r\n", indent(level: indentationLevel), self.tagName()))
+    }
+    
 }
 
 // MARK:- Courses Subfolder
 
 /// `CourseFolder_t`
 public final class TCXCoursesFolder: TCXElement {
-    public func tagName() -> String {
+    func tagName() -> String {
         return ""
     }
     // shouldn't conform to TCXFolderType

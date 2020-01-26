@@ -7,22 +7,29 @@
 
 import Foundation
 
-public class _TCXElement: NSObject, TCXElement {
-    public func tagName() -> String {
-        fatalError()
-    }
+public class TCXFolderType: NSObject, TCXElement {
+    func tagName() -> String { fatalError("Not implemented") }
+    var category: TCXCategoryFolderNames = .unspecified
     
+    func tcxTagging(_ tcx: inout String, indentationLevel: Int) {
+        addOpenTag(toTCX: &tcx, indentationLevel: indentationLevel)
+        addChildTag(toTCX: &tcx, indentationLevel: indentationLevel + 1)
+        addCloseTag(toTCX: &tcx, indentationLevel: indentationLevel)
+    }
+    func addOpenTag(toTCX tcx: inout String, indentationLevel level: Int) {}
+    func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {}
+    func addCloseTag(toTCX tcx: inout String, indentationLevel: Int) {}
 }
 
-public protocol TCXFolderType: _TCXElement {
-    var category: TCXCategoryFolderNames { get set }
+/*public protocol TCXFolderType: TCXFolderType {
+    
     //var categoryTag: TCXCategoryFolderNames { get }
-}
-extension TCXFolderType {
+}*/
+/*extension TCXFolderType {
     public var category: TCXCategoryFolderNames {
         get { return .unspecified }
     }
-}
+}*/
 
 public enum TCXCategoryFolderNames: String {
     case running = "Running"
@@ -53,7 +60,7 @@ public class TCXSubfolders<folderType: TCXFolderType>: NSObject, TCXElement {
         }
     }
     
-    public func tagName() -> String {
+    func tagName() -> String {
         if folderType.self == TCXHistoryFolder.self {
             return "History"
         }
@@ -93,7 +100,7 @@ public class TCXSubfolders<folderType: TCXFolderType>: NSObject, TCXElement {
 
 /// `Courses_t`
 public final class TCXCourses: TCXElement {
-    public func tagName() -> String {
+    func tagName() -> String {
         return "Courses"
     }
     

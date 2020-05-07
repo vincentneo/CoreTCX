@@ -19,8 +19,8 @@ public final class TCXWorkouts: NSObject, TCXElement {
 }
 */
 
+// WorkoutList_t
 extension Array: TCXPublicElement where Element : TCXWorkout {}
-
 extension Array: TCXElement where Element : TCXWorkout {
     func tagName() -> String {
         return "Workouts"
@@ -33,18 +33,27 @@ extension Array: TCXElement where Element : TCXWorkout {
     }
 }
 
+// Workout_t
 public class TCXWorkout: NSObject, TCXElement {
+    
+    enum sportType: String {
+        case running = "Running", biking = "Biking", other = "Other", undefined
+    }
     func tagName() -> String {
         return "Workout"
     }
     
-    var sport: String?
-    var name: TCXRestrictedToken?
-    var step = [TCXAbstractStep]()
+    var sport: sportType
+    var name: String?
+    var step = [TCXAbstractStep]() // at least one
     var scheduledOn: [Date]?
     var notes: String?
     //var creator: abstractsource
     var extensions: TCXExtensions?
+    
+    init(sport: sportType) {
+        self.sport = sport
+    }
     
     func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         addProperty(forValue: 330, tcx: &tcx, tagName: "Test", indentationLevel: indentationLevel)
@@ -52,7 +61,14 @@ public class TCXWorkout: NSObject, TCXElement {
     
 }
 
-class TCXAbstractStep: TCXElement {
+protocol TCXAbstract {
+    
+}
+
+enum abs: TCXAbstract {
+}
+
+class TCXAbstractStep<type: abs>: TCXElement {
     func tagName() -> String {
         fatalError()
     }

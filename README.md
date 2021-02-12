@@ -1,12 +1,15 @@
 # CoreTCX
 
 [![CI Status](https://img.shields.io/travis/vincentneo/CoreTCX.svg?style=flat)](https://travis-ci.org/vincentneo/CoreTCX)
-[![Version](https://img.shields.io/cocoapods/v/CoreTCX.svg?style=flat)](https://cocoapods.org/pods/CoreTCX)
 [![Swift Version](https://img.shields.io/badge/Swift-5.0-orange.svg)](https://swift.org/blog/swift-5-released/)
 [![TCX Version](https://img.shields.io/badge/tcx-2.0-darkblue.svg)](https://support.garmin.com/en-SG/?faq=VgxTchxqKO4ZbL0ucq05K8)
 ![Current Project Status](https://img.shields.io/badge/status-work%20in%20progress-yellow)
 [![License](http://img.shields.io/:license-mit-black.svg)](http://doge.mit-license.org)
+<br/>
+<!---
 [![Platform](https://img.shields.io/cocoapods/p/CoreTCX.svg?style=flat)](https://cocoapods.org/pods/CoreTCX)
+[![Version](https://img.shields.io/cocoapods/v/CoreTCX.svg?style=flat)](https://cocoapods.org/pods/CoreTCX)
+--->
 
 ## Work In Progress
 

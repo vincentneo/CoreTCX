@@ -9,7 +9,7 @@ import Foundation
 
 public class TCXFolderType: NSObject, TCXElement {
     func tagName() -> String { fatalError("Not implemented") }
-    var category: TCXCategoryFolderNames = .unspecified
+    var category: TCXCategoryFolderNames!
     
     func tcxTagging(_ tcx: inout String, indentationLevel: Int) {
         addOpenTag(toTCX: &tcx, indentationLevel: indentationLevel)
@@ -38,6 +38,9 @@ public enum TCXCategoryFolderNames: String {
     case multiSport = "MultiSport"
     case unspecified = "Unknown"
 }
+
+public typealias History = TCXHistoryFolder
+public typealias Workouts = TCXWorkoutsFolder
 
 /// `History_t` or `Workouts_t`
 public class TCXSubfolders<folderType: TCXFolderType>: NSObject, TCXElement {

@@ -68,7 +68,7 @@ protocol TCXAbstract {
 enum abs: TCXAbstract {
 }
 
-class TCXAbstractStep<type: abs>: TCXElement {
+class TCXAbstractStep/*<type: abs>*/: TCXElement {
     func tagName() -> String {
         fatalError()
     }

@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         
         
         print(tcxfolder.tcxFormatted())
-        print([TCXWorkout(), TCXWorkout()].tcxFormatted())
+        //print([TCXWorkout(), TCXWorkout()].tcxFormatted())
         print(tx.tcxFormatted())
         //print(TCXWorkout().tcxFormatted())
 

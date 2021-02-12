@@ -12,12 +12,12 @@
 
 This project is taking a long time, but I can assure you, that I will finish it up, one day. 
 
-If anyone has could supply me some TCX files that you have, I would be very grateful. It will only be used to test the project, and to check if some parts of my code are correctly implemented. I find that its easier to get GPX files than TCX files, personally. To get in touch with me, you can email me at **vincent-programs (at) outlook (dot) com**
+If anyone has could supply me some TCX files that you have, I would be very grateful. It will only be used to test the project, and to check if some parts of my code are correctly implemented. I find that its easier to get GPX files than TCX files, personally. To get in touch with me, you can email me at **vincent-neo (at) outlook (dot) com**
 
 ## Description
 
 The goal of CoreTCX, is to bring easier workability, when handling TCX files in iOS. This library will be able to parse and create TCX files that are valid according to the [Garmin Training Center XML v2](https://www8.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd).
-
+<!---
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -30,7 +30,7 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'CoreTCX'
 ```
-
+-->
 ## Author
 
 Vincent Neo

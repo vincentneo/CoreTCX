@@ -7,10 +7,10 @@
 
 import Foundation
 
-class TCXActivityList: TCXElement {
+class TCXActivities: TCXElement {
     
     var activity = [TCXActivity]()
-    // var multiSportSession =
+    var multiSportSession = [TCXMultiSportSession]()
     
     func tagName() -> String {
         return "Activities"
@@ -19,6 +19,10 @@ class TCXActivityList: TCXElement {
     func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
         for eachActivity in activity {
             eachActivity.tcxTagging(&tcx, indentationLevel: indentationLevel)
+        }
+        
+        for each in multiSportSession {
+            each.tcxTagging(&tcx, indentationLevel: indentationLevel)
         }
     }
 }
@@ -29,7 +33,17 @@ public final class TCXMultiSportSession: TCXElement {
     
     public var id: Date?
     public var firstSport: TCXActivity?
-    public var nextSport = [TCXActivity]() // implement nextSport element
+    public var nextSport = [NextSport]() // implement nextSport element
+    
+    public class NextSport {
+        public var transition: TCXActivityLap?
+        public var activity: TCXActivity
+        
+        public init(activity: TCXActivity, transition: TCXActivityLap) {
+            self.transition = transition
+            self.activity = activity
+        }
+    }
     
     public init() {
         

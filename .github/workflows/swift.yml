@@ -4,15 +4,18 @@ on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [ master ]
+    branches: 
+      - '*'
 
 jobs:
-  build:
-
+  iOS:
+    name: Build iOS Framework
+    env: 
+      DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build iOS
-      run: xcodebuild -workspace "Example/CoreTCX.xcworkspace" -scheme "CoreTCX" -destination "OS=14.3,name=iPhone 12 Pro" -configuration Release ONLY_ACTIVE_ARCH=NO clean build | xcpretty
+    - name: Build
+      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Example/CoreTCX.xcworkspace" -scheme "CoreTCX" -destination "OS=14.3,name=iPhone 12 Pro" clean build | xcpretty
     #- name: Run tests
       #run: swift test -v

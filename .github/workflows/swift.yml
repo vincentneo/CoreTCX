@@ -10,12 +10,9 @@ jobs:
   build:
 
     runs-on: macos-latest
-    defaults:
-      run:
-        working-directory: Example
     steps:
     - uses: actions/checkout@v2
-    - name: Build
-      run: swift build -v
+    - name: Build iOS
+      run: xcodebuild -workspace "Example/CoreTCX.xcworkspace" -scheme "CoreTCX" -destination "OS=14.3,name=iPhone 12 Pro" -configuration Release ONLY_ACTIVE_ARCH=NO clean build | xcpretty
     #- name: Run tests
       #run: swift test -v

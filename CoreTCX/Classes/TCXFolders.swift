@@ -11,8 +11,8 @@ import Foundation
 
 /// `Folders_t`
 public class TCXFolders: NSObject, TCXElement {
-    public var history: TCXSubfolders<TCXHistoryFolder>?
-    public var workouts: TCXSubfolders<TCXWorkoutsFolder>?
+    public var history: TCXHistory?
+    public var workouts: TCXWorkouts?
     public var courses: TCXCourses?
     
     func tagName() -> String {

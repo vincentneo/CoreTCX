@@ -11,6 +11,14 @@ public class TCXFolderType: NSObject, TCXElement {
     func tagName() -> String { fatalError("Not implemented") }
     var category: TCXCategoryFolderNames!
     
+    public enum TCXCategoryFolderNames: String {
+        case running = "Running"
+        case biking = "Biking"
+        case other = "Other"
+        case multiSport = "MultiSport"
+        case unspecified = "Unknown"
+    }
+    
     func tcxTagging(_ tcx: inout String, indentationLevel: Int) {
         addOpenTag(toTCX: &tcx, indentationLevel: indentationLevel)
         addChildTag(toTCX: &tcx, indentationLevel: indentationLevel + 1)
@@ -31,23 +39,11 @@ public class TCXFolderType: NSObject, TCXElement {
     }
 }*/
 
-public enum TCXCategoryFolderNames: String {
-    case running = "Running"
-    case biking = "Biking"
-    case other = "Other"
-    case multiSport = "MultiSport"
-    case unspecified = "Unknown"
-}
-
-public typealias History = TCXHistoryFolder
-public typealias Workouts = TCXWorkoutsFolder
-
 /// `History_t` or `Workouts_t`
 public class TCXSubfolders<folderType: TCXFolderType>: NSObject, TCXElement {
     public var running: folderType?
     public var biking: folderType?
     public var other: folderType?
-    public var multiSport: TCXHistoryFolder?
     public var extensions: TCXExtensions?
     
     public override init() {
@@ -58,9 +54,6 @@ public class TCXSubfolders<folderType: TCXFolderType>: NSObject, TCXElement {
         running?.category = .running
         biking?.category = .biking
         other?.category = .other
-        if folderType.self == TCXHistoryFolder.self {
-            multiSport?.category = .multiSport
-        }
     }
     
     func tagName() -> String {
@@ -90,15 +83,23 @@ public class TCXSubfolders<folderType: TCXFolderType>: NSObject, TCXElement {
         if let extensions = extensions {
             extensions.tcxTagging(&tcx, indentationLevel: indentationLevel)
         }
-        
-        // MultiSport tag is only written if folder is of type `History_t`
-        if folderType.self == TCXHistoryFolder.self {
-            if let multiSport = multiSport {
-                multiSport.tcxTagging(&tcx, indentationLevel: indentationLevel)
-            }
-        }
     }
     
+}
+
+public final class TCXWorkouts: TCXSubfolders<TCXWorkoutsFolder> {}
+
+public final class TCXHistory: TCXSubfolders<TCXHistoryFolder> {
+    public var multiSport: TCXHistoryFolder?
+    
+    override func addChildTag(toTCX tcx: inout String, indentationLevel: Int) {
+        multiSport?.category = .multiSport
+        
+        // MultiSport tag is only written if folder is of type `History_t`
+        if let multiSport = multiSport {
+            multiSport.tcxTagging(&tcx, indentationLevel: indentationLevel)
+        }
+    }
 }
 
 /// `Courses_t`

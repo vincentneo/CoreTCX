@@ -21,6 +21,10 @@ public struct TCXBuild {
      */
     var time: String?
     
-    /// The login name of the engineer who created this build.
+    /**
+     
+    Garmin Schema Documentation
+     The login name of the engineer who created this build.
+     */
     var builder: String?
 }

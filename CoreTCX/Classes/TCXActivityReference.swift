@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class TCXActivityReference: NSObject, TCXElement {
+public struct TCXActivityReference: TCXElement {
 
     func tagName() -> String {
         return "ActivityRef"
@@ -15,7 +15,7 @@ public class TCXActivityReference: NSObject, TCXElement {
     
     public var id: Date
     
-    public override init() {
+    public init() {
         id = Date()
     }
     

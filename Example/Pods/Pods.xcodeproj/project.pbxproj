@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		08D4D53BAE7271AA53ECD8560775E74E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		12365FD828104087001892C5 /* TCXPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FD728104087001892C5 /* TCXPlan.swift */; };
+		12365FDA281040A7001892C5 /* TCXTrainingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FD9281040A7001892C5 /* TCXTrainingType.swift */; };
+		12365FDC28104117001892C5 /* TCXTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FDB28104117001892C5 /* TCXTraining.swift */; };
+		12365FDE28104136001892C5 /* TCXQuickWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FDD28104136001892C5 /* TCXQuickWorkout.swift */; };
+		12365FE02810415B001892C5 /* TCXCoursePointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FDF2810415B001892C5 /* TCXCoursePointType.swift */; };
+		12365FE2281042C5001892C5 /* TCXWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FE1281042C5001892C5 /* TCXWeek.swift */; };
 		1296B145235584A800F3A36A /* TCXWorkouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1296B144235584A800F3A36A /* TCXWorkouts.swift */; };
 		1296B14823558F1200F3A36A /* String+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1296B14723558F1200F3A36A /* String+XML.swift */; };
 		20C41B7CB6B3CB7DD5BE0659E9B97EBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
@@ -54,6 +60,12 @@
 		0701AD4B1B745F327B690673194AB85E /* Pods_CoreTCX_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreTCX_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C9075DB3B0815AA434697BCDD220F00 /* CoreTCX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CoreTCX.modulemap; sourceTree = "<group>"; };
 		0E65276A4E299501F99E77AAB72AA8C6 /* Pods-CoreTCX_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CoreTCX_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		12365FD728104087001892C5 /* TCXPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXPlan.swift; sourceTree = "<group>"; };
+		12365FD9281040A7001892C5 /* TCXTrainingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXTrainingType.swift; sourceTree = "<group>"; };
+		12365FDB28104117001892C5 /* TCXTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXTraining.swift; sourceTree = "<group>"; };
+		12365FDD28104136001892C5 /* TCXQuickWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXQuickWorkout.swift; sourceTree = "<group>"; };
+		12365FDF2810415B001892C5 /* TCXCoursePointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXCoursePointType.swift; sourceTree = "<group>"; };
+		12365FE1281042C5001892C5 /* TCXWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXWeek.swift; sourceTree = "<group>"; };
 		1296B144235584A800F3A36A /* TCXWorkouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXWorkouts.swift; sourceTree = "<group>"; };
 		1296B14723558F1200F3A36A /* String+XML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+XML.swift"; sourceTree = "<group>"; };
 		24B701BB64D81EC1D62A584F807467FA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -203,6 +215,12 @@
 				A68B9FA342B7959D893DEB8F1F7F6405 /* Support Files */,
 				BF2E184923A3C88000590745 /* Converters.swift */,
 				BF2E184B23A3D15A00590745 /* TCXDateConverters.swift */,
+				12365FD728104087001892C5 /* TCXPlan.swift */,
+				12365FD9281040A7001892C5 /* TCXTrainingType.swift */,
+				12365FDB28104117001892C5 /* TCXTraining.swift */,
+				12365FDD28104136001892C5 /* TCXQuickWorkout.swift */,
+				12365FDF2810415B001892C5 /* TCXCoursePointType.swift */,
+				12365FE1281042C5001892C5 /* TCXWeek.swift */,
 			);
 			name = CoreTCX;
 			path = ../..;
@@ -408,12 +426,18 @@
 				BF2E184A23A3C88000590745 /* Converters.swift in Sources */,
 				BFC47F4D23A2210D0094726F /* TCXSubfolders.swift in Sources */,
 				1296B14823558F1200F3A36A /* String+XML.swift in Sources */,
+				12365FE02810415B001892C5 /* TCXCoursePointType.swift in Sources */,
 				1296B145235584A800F3A36A /* TCXWorkouts.swift in Sources */,
+				12365FE2281042C5001892C5 /* TCXWeek.swift in Sources */,
 				4FE8D6F1D1E15BFFF4E4792A23094CFA /* TCXElement.swift in Sources */,
+				12365FDC28104117001892C5 /* TCXTraining.swift in Sources */,
+				12365FDA281040A7001892C5 /* TCXTrainingType.swift in Sources */,
 				BF2E184C23A3D15A00590745 /* TCXDateConverters.swift in Sources */,
 				BF795052231127C700DE6CCA /* TCXRoot.swift in Sources */,
+				12365FD828104087001892C5 /* TCXPlan.swift in Sources */,
 				BFABE6722318E2BF00710967 /* TCXActivities.swift in Sources */,
 				BF2E184723A3C63900590745 /* TCXActivityReference.swift in Sources */,
+				12365FDE28104136001892C5 /* TCXQuickWorkout.swift in Sources */,
 				BF7950572311824500DE6CCA /* TCXCommonTypes.swift in Sources */,
 				BF2DB78523A2776900D71250 /* TCXCategoryFolders.swift in Sources */,
 			);

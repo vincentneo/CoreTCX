@@ -78,11 +78,7 @@ public final class TCXActivity: TCXElement {
     
 }
 
-public enum TCXSport: String {
-    case running = "Running"
-    case biking = "Biking"
-    case other = "Other"
-}
+
 
 public final class TCXActivityLap: TCXElement {
     public var startTime: Date

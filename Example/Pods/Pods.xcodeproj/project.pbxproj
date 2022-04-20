@@ -14,6 +14,12 @@
 		12365FDE28104136001892C5 /* TCXQuickWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FDD28104136001892C5 /* TCXQuickWorkout.swift */; };
 		12365FE02810415B001892C5 /* TCXCoursePointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FDF2810415B001892C5 /* TCXCoursePointType.swift */; };
 		12365FE2281042C5001892C5 /* TCXWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FE1281042C5001892C5 /* TCXWeek.swift */; };
+		12365FE4281044BA001892C5 /* TCXFirstSport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FE3281044BA001892C5 /* TCXFirstSport.swift */; };
+		12365FE6281044F2001892C5 /* TCXNextSport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FE5281044F2001892C5 /* TCXNextSport.swift */; };
+		12365FE828104618001892C5 /* TCXSport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FE728104618001892C5 /* TCXSport.swift */; };
+		12365FEA28104686001892C5 /* TCXAbstractSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FE928104686001892C5 /* TCXAbstractSource.swift */; };
+		12365FEC281046C0001892C5 /* TCXDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FEB281046C0001892C5 /* TCXDevice.swift */; };
+		12365FEE281048F2001892C5 /* TCXVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FED281048F2001892C5 /* TCXVersion.swift */; };
 		1296B145235584A800F3A36A /* TCXWorkouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1296B144235584A800F3A36A /* TCXWorkouts.swift */; };
 		1296B14823558F1200F3A36A /* String+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1296B14723558F1200F3A36A /* String+XML.swift */; };
 		20C41B7CB6B3CB7DD5BE0659E9B97EBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
@@ -66,6 +72,12 @@
 		12365FDD28104136001892C5 /* TCXQuickWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXQuickWorkout.swift; sourceTree = "<group>"; };
 		12365FDF2810415B001892C5 /* TCXCoursePointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXCoursePointType.swift; sourceTree = "<group>"; };
 		12365FE1281042C5001892C5 /* TCXWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXWeek.swift; sourceTree = "<group>"; };
+		12365FE3281044BA001892C5 /* TCXFirstSport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXFirstSport.swift; sourceTree = "<group>"; };
+		12365FE5281044F2001892C5 /* TCXNextSport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXNextSport.swift; sourceTree = "<group>"; };
+		12365FE728104618001892C5 /* TCXSport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXSport.swift; sourceTree = "<group>"; };
+		12365FE928104686001892C5 /* TCXAbstractSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXAbstractSource.swift; sourceTree = "<group>"; };
+		12365FEB281046C0001892C5 /* TCXDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXDevice.swift; sourceTree = "<group>"; };
+		12365FED281048F2001892C5 /* TCXVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXVersion.swift; sourceTree = "<group>"; };
 		1296B144235584A800F3A36A /* TCXWorkouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXWorkouts.swift; sourceTree = "<group>"; };
 		1296B14723558F1200F3A36A /* String+XML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+XML.swift"; sourceTree = "<group>"; };
 		24B701BB64D81EC1D62A584F807467FA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -221,6 +233,12 @@
 				12365FDD28104136001892C5 /* TCXQuickWorkout.swift */,
 				12365FDF2810415B001892C5 /* TCXCoursePointType.swift */,
 				12365FE1281042C5001892C5 /* TCXWeek.swift */,
+				12365FE3281044BA001892C5 /* TCXFirstSport.swift */,
+				12365FE5281044F2001892C5 /* TCXNextSport.swift */,
+				12365FE728104618001892C5 /* TCXSport.swift */,
+				12365FE928104686001892C5 /* TCXAbstractSource.swift */,
+				12365FEB281046C0001892C5 /* TCXDevice.swift */,
+				12365FED281048F2001892C5 /* TCXVersion.swift */,
 			);
 			name = CoreTCX;
 			path = ../..;
@@ -422,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE535DF7C21AD24B69BA3A67DE94E6E0 /* CoreTCX-dummy.m in Sources */,
+				12365FE4281044BA001892C5 /* TCXFirstSport.swift in Sources */,
 				BF795055231129DB00DE6CCA /* TCXFolders.swift in Sources */,
 				BF2E184A23A3C88000590745 /* Converters.swift in Sources */,
 				BFC47F4D23A2210D0094726F /* TCXSubfolders.swift in Sources */,
@@ -429,9 +448,11 @@
 				12365FE02810415B001892C5 /* TCXCoursePointType.swift in Sources */,
 				1296B145235584A800F3A36A /* TCXWorkouts.swift in Sources */,
 				12365FE2281042C5001892C5 /* TCXWeek.swift in Sources */,
+				12365FEC281046C0001892C5 /* TCXDevice.swift in Sources */,
 				4FE8D6F1D1E15BFFF4E4792A23094CFA /* TCXElement.swift in Sources */,
 				12365FDC28104117001892C5 /* TCXTraining.swift in Sources */,
 				12365FDA281040A7001892C5 /* TCXTrainingType.swift in Sources */,
+				12365FEA28104686001892C5 /* TCXAbstractSource.swift in Sources */,
 				BF2E184C23A3D15A00590745 /* TCXDateConverters.swift in Sources */,
 				BF795052231127C700DE6CCA /* TCXRoot.swift in Sources */,
 				12365FD828104087001892C5 /* TCXPlan.swift in Sources */,
@@ -439,6 +460,9 @@
 				BF2E184723A3C63900590745 /* TCXActivityReference.swift in Sources */,
 				12365FDE28104136001892C5 /* TCXQuickWorkout.swift in Sources */,
 				BF7950572311824500DE6CCA /* TCXCommonTypes.swift in Sources */,
+				12365FEE281048F2001892C5 /* TCXVersion.swift in Sources */,
+				12365FE6281044F2001892C5 /* TCXNextSport.swift in Sources */,
+				12365FE828104618001892C5 /* TCXSport.swift in Sources */,
 				BF2DB78523A2776900D71250 /* TCXCategoryFolders.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,6 +20,10 @@
 		12365FEA28104686001892C5 /* TCXAbstractSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FE928104686001892C5 /* TCXAbstractSource.swift */; };
 		12365FEC281046C0001892C5 /* TCXDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FEB281046C0001892C5 /* TCXDevice.swift */; };
 		12365FEE281048F2001892C5 /* TCXVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FED281048F2001892C5 /* TCXVersion.swift */; };
+		12365FF028104A88001892C5 /* TCXApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FEF28104A88001892C5 /* TCXApplication.swift */; };
+		12365FF228104AF2001892C5 /* TCXBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FF128104AF2001892C5 /* TCXBuild.swift */; };
+		12365FF428104BE9001892C5 /* TCXBuildType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FF328104BE9001892C5 /* TCXBuildType.swift */; };
+		12365FF628104F78001892C5 /* TCXPartNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12365FF528104F78001892C5 /* TCXPartNumber.swift */; };
 		1296B145235584A800F3A36A /* TCXWorkouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1296B144235584A800F3A36A /* TCXWorkouts.swift */; };
 		1296B14823558F1200F3A36A /* String+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1296B14723558F1200F3A36A /* String+XML.swift */; };
 		20C41B7CB6B3CB7DD5BE0659E9B97EBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
@@ -78,6 +82,10 @@
 		12365FE928104686001892C5 /* TCXAbstractSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXAbstractSource.swift; sourceTree = "<group>"; };
 		12365FEB281046C0001892C5 /* TCXDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXDevice.swift; sourceTree = "<group>"; };
 		12365FED281048F2001892C5 /* TCXVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXVersion.swift; sourceTree = "<group>"; };
+		12365FEF28104A88001892C5 /* TCXApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXApplication.swift; sourceTree = "<group>"; };
+		12365FF128104AF2001892C5 /* TCXBuild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXBuild.swift; sourceTree = "<group>"; };
+		12365FF328104BE9001892C5 /* TCXBuildType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXBuildType.swift; sourceTree = "<group>"; };
+		12365FF528104F78001892C5 /* TCXPartNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXPartNumber.swift; sourceTree = "<group>"; };
 		1296B144235584A800F3A36A /* TCXWorkouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXWorkouts.swift; sourceTree = "<group>"; };
 		1296B14723558F1200F3A36A /* String+XML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+XML.swift"; sourceTree = "<group>"; };
 		24B701BB64D81EC1D62A584F807467FA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -239,6 +247,10 @@
 				12365FE928104686001892C5 /* TCXAbstractSource.swift */,
 				12365FEB281046C0001892C5 /* TCXDevice.swift */,
 				12365FED281048F2001892C5 /* TCXVersion.swift */,
+				12365FEF28104A88001892C5 /* TCXApplication.swift */,
+				12365FF128104AF2001892C5 /* TCXBuild.swift */,
+				12365FF328104BE9001892C5 /* TCXBuildType.swift */,
+				12365FF528104F78001892C5 /* TCXPartNumber.swift */,
 			);
 			name = CoreTCX;
 			path = ../..;
@@ -453,14 +465,18 @@
 				12365FDC28104117001892C5 /* TCXTraining.swift in Sources */,
 				12365FDA281040A7001892C5 /* TCXTrainingType.swift in Sources */,
 				12365FEA28104686001892C5 /* TCXAbstractSource.swift in Sources */,
+				12365FF228104AF2001892C5 /* TCXBuild.swift in Sources */,
+				12365FF428104BE9001892C5 /* TCXBuildType.swift in Sources */,
 				BF2E184C23A3D15A00590745 /* TCXDateConverters.swift in Sources */,
 				BF795052231127C700DE6CCA /* TCXRoot.swift in Sources */,
 				12365FD828104087001892C5 /* TCXPlan.swift in Sources */,
 				BFABE6722318E2BF00710967 /* TCXActivities.swift in Sources */,
 				BF2E184723A3C63900590745 /* TCXActivityReference.swift in Sources */,
 				12365FDE28104136001892C5 /* TCXQuickWorkout.swift in Sources */,
+				12365FF628104F78001892C5 /* TCXPartNumber.swift in Sources */,
 				BF7950572311824500DE6CCA /* TCXCommonTypes.swift in Sources */,
 				12365FEE281048F2001892C5 /* TCXVersion.swift in Sources */,
+				12365FF028104A88001892C5 /* TCXApplication.swift in Sources */,
 				12365FE6281044F2001892C5 /* TCXNextSport.swift in Sources */,
 				12365FE828104618001892C5 /* TCXSport.swift in Sources */,
 				BF2DB78523A2776900D71250 /* TCXCategoryFolders.swift in Sources */,

@@ -13,4 +13,6 @@ public struct TCXTraining: TCXElement {
     }
     
     public var quickWorkoutResults: TCXQuickWorkout?
+    public var plan: TCXPlan?
+    public var virtualPartner: Bool
 }
